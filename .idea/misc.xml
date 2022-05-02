@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/dajiuye-common/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-acl/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-seckill/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-order/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-chat/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-api/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-job-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-swipper-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-message-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-web-app/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-acl-service/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/dajiuye-common/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-interface/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

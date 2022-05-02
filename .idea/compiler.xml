@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dajiuye-api" />
+        <module name="dajiuye-swipper-service" />
+        <module name="dajiuye-acl-service" />
+        <module name="dajiuye-web-app" />
+        <module name="dajiuye-seckill" />
+        <module name="dajiuye-order" />
+        <module name="dajiuye-job" />
+        <module name="dajiuye-job-service" />
+        <module name="dajiuye-editor" />
+        <module name="dajiuye-message-service" />
+        <module name="dajiuye-user-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dajiuye-acl-service" target="1.8" />
+      <module name="dajiuye-api" target="1.8" />
+      <module name="dajiuye-cloud" target="1.8" />
+      <module name="dajiuye-common" target="1.8" />
+      <module name="dajiuye-editor" target="1.8" />
+      <module name="dajiuye-gateway" target="1.8" />
+      <module name="dajiuye-job" target="1.8" />
+      <module name="dajiuye-job-service" target="1.8" />
+      <module name="dajiuye-job-web" target="1.8" />
+      <module name="dajiuye-message-service" target="1.8" />
+      <module name="dajiuye-message-web" target="1.8" />
+      <module name="dajiuye-order" target="1.8" />
+      <module name="dajiuye-own" target="1.8" />
+      <module name="dajiuye-seckill" target="1.8" />
+      <module name="dajiuye-swipper-service" target="1.8" />
+      <module name="dajiuye-swipper-web" target="1.8" />
+      <module name="dajiuye-user-service" target="1.8" />
+      <module name="dajiuye-user-web" target="1.8" />
+      <module name="dajiuye-web-app" target="1.8" />
+      <module name="dubbo-interface" target="1.8" />
+      <module name="health-common" target="1.8" />
+      <module name="service_base" target="1.8" />
+      <module name="spring_security" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dajiuye-own" options="" />
+    </option>
+  </component>
+</project>

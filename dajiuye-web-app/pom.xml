@@ -15,7 +15,7 @@
     </parent>
 
     <dependencies>
-        <!--认证模块-->
+        <!--认证模块 s -->
         <dependency>
         <groupId>com.lhf.dajiuye</groupId>
         <artifactId>spring_security</artifactId>
