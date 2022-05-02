@@ -1,6 +1,7 @@
 import { request } from "../../requests/index.js";
 const httputil = require("../../utils/httputil.js") //一定要引入，根据你自己写的上传文件路径
 var out_photo = "";
+var app = getApp() // 获取全局app对象
 Page({
 
     /**
@@ -23,6 +24,9 @@ Page({
         resumeName: '',
         isLogin: false
     },
+    Authorization: {
+        token: 'asda'
+    },
     // 发送投递简历
     Userdeliver: {
         fromUserId: '',
@@ -33,6 +37,7 @@ Page({
     // 工作信息全局对象
     jobInfoStorage: {},
     onLoad: function (options) {
+        this.Authorization.token = app.globalData.token
         this.setData({
             jobId: options.jobId,
             jobType:options.jobType
@@ -44,7 +49,8 @@ Page({
 
     // 职位被浏览，发送增浏览权值
     async incrementScore(jobId){
-        const result = await request({ url: "/own/home/addJobScore", data: {jobId} });
+        var that=this
+        const result = await request({ url: "/job/job/addJobScore", data: {jobId}, header: that.Authorization });
         console.log("增加了职位权重")
     },
 
@@ -140,12 +146,13 @@ Page({
     },
     // 提交投递请求
     async sendResume() {
+        var that=this
         const userInfo = wx.getStorageSync('userInfo')
         this.Userdeliver.fromUserId = userInfo.id;
         this.Userdeliver.toHrId = this.data.jobObj.jobAuthorId;
         this.Userdeliver.resumeUrl = userInfo.resume;
         this.Userdeliver.jobId = this.data.jobObj.jobId;
-        const result = await request({ url: "/own/user/saveDeliver", data: this.Userdeliver });        
+        const result = await request({ url: "/user/deliver/saveDeliver", data: this.Userdeliver, header: that.Authorization });        
         console.log("发送给hr后返回的结果为：")
         console.log(result)
         this.setData({
@@ -166,14 +173,15 @@ Page({
     },
     // 发送消息
     async sendMessage(fromOpenId, toOpenId, news) {
-        // const result = await request({ url: "/upload/saveMessage", data: {fromOpenId,toOpenId,news} });
-        const result = await request({ url: "/own/user/saveMessage2", data: {fromOpenId,toOpenId,news},method: 'POST', header: { "Content-Type": "application/json" } });
+        var that=this
+        const result = await request({ url: "/message/message/saveMessage2", data: {fromOpenId,toOpenId,news},method: 'POST',  header: that.Authorization});
         console.log("发送消息了")
         console.log(result)
     },
     // 获取职位详情数据
     async getJobDetail(jobId) {
-        const result = await request({ url: "/own/home/job", data: { jobId } });
+        var that=this
+        const result = await request({ url: "/job/job/job", data: { jobId }, header: that.Authorization });
         console.log(result)
         this.jobInfoStorage = result;
         // 判断是否都投递过该职位

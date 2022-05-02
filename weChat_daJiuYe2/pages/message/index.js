@@ -13,11 +13,14 @@ Page({
         toOpenid: '',
         notice: '请和您的医生一起根据个体情况决定',
     },
-
+    Authorization: {
+        token: 'asda'
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.Authorization.token = app.globalData.token
         var that = this
         app.globalData.refreshCallback = function () {
             app.globalData.socketClient.subscribe('/topic/public', function (message) {
@@ -54,20 +57,16 @@ Page({
         })
         this.setAllMessage(userInfo.openId)
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
     onHide: function () {},
-
     // 初始化所有的消息
     async setAllMessage(openId) {
         var that = this
         const result = await request({
-            url: "/own/user/getAllMessage",
+            url: "/message/message/getAllMessage",
             data: {
                 openId
-            }
+            },
+            header: that.Authorization
         });
         that.setData({
             allMessage: result

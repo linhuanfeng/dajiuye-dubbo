@@ -23,6 +23,10 @@ Page({
         encryptedData: '',
         iv: ''
     },
+    Authorization: {
+        token: 'asda'
+    },
+    
     /**
      * 生命周期函数--监听页面显示
      */
@@ -55,6 +59,7 @@ Page({
                 }
             }
         });
+        this.Authorization.token = app.globalData.token
     },
     // 1.点击登录
     getUserProfile(e) {
@@ -96,13 +101,14 @@ Page({
     async getMegFromServer() {
         console.log("loginInof==>")
         console.log(this.LoginInfo)
+        var that=this
         const result = await request({
-            url: "/own/user/handleWXMsg",
+            url: "/user/wx/handleWXMsg",
             data: this.LoginInfo,
             method: 'POST',
             header: {
                 "Content-Type": "application/x-www-form-urlencoded",
-                "token":"eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWKi5NUrJSSkzJzcxT0lFKrShQsjI0MzE3tDA1NjGsBQDbP5-rIAAAAA.-8J_WOPoYm3va-XIaorhrD4ptTXndi0GBLX5abGA6NpKnwTC5YohnLkzoZTuzZ_aYUYE0JjmLn_vC28m3yTJfg"
+                "token":that.Authorization.token
             }
         });
         console.log("handleWXMsg==>结果")

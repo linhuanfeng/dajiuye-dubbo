@@ -1,5 +1,5 @@
 import { request } from "../../requests/index.js";
-import regeneratorRuntime from '../../lib/runtime/runtime';
+var app = getApp() // 获取全局app对象
 Page({
 
     /**
@@ -20,19 +20,14 @@ Page({
         //接口的返回数据
         Cates2: [],
     },
-
-    bindscrolltoupper() {
-        // console.log("top..")
+    Authorization: {
+        token: 'asda'
     },
-
-    scrollTop() {
-        // console.log("scroll..");
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        this.Authorization.token = app.globalData.token
         this.setData({
             expectCities: wx.getStorageSync("expectCities") || []
         })
@@ -41,7 +36,8 @@ Page({
     onShow: function() {},
     //获取分类数据
     async getCates2() {
-        const result = await request({ url: "/school/placedata" });
+        var that=this
+        const result = await request({ url: "/swipper/area/placedata",header: that.Authorization });
         this.setData({
             Cates2: result
         });

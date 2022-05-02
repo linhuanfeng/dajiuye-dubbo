@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fb8445d-63ee-4c4a-ad9e-e33195942f74" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dajiuye-web-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dajiuye-web-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/common/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/common/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/article_details/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/article_details/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/category_job/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/category_job/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/community/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/community/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/company_home/index.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/expect_cities/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/expect_cities/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/expect_jobs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/expect_jobs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/feedback/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/feedback/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/feedback_job/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/feedback_job/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/index/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/job_details/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/job_details/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/job_details/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/job_details/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/job_publish/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/job_publish/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/jobs_list/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/jobs_list/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/message/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/message/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/question_details/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/question_details/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/recruit/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/recruit/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/school_details/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/school_details/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/search/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/search/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weChat_daJiuYe2/pages/user/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/weChat_daJiuYe2/pages/user/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -435,7 +461,7 @@
       <workItem from="1651416021229" duration="20350000" />
       <workItem from="1651479786889" duration="8704000" />
       <workItem from="1651489284919" duration="3802000" />
-      <workItem from="1651493139147" duration="5007000" />
+      <workItem from="1651493139147" duration="5687000" />
     </task>
     <task id="LOCAL-00001" summary="改造">
       <created>1647171793050</created>

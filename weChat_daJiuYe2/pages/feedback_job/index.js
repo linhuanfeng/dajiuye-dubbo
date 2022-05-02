@@ -1,5 +1,6 @@
 //0 引入用来发送请求的方法 一定要把路径补全
 import { request } from "../../requests/index.js";
+var app = getApp() // 获取全局app对象
 Page({
     data: {
         //职位数组
@@ -34,9 +35,13 @@ Page({
         // 职位类型
         state: "0"
     },
+    Authorization: {
+        token: 'asda'
+    },
     totalPages:1,
     //options(Object) 页面开始加载就会触发
     onLoad: function(options) {
+        this.Authorization.token = app.globalData.token
         const userInfo = wx.getStorageSync('userInfo')
         this.Params.userid=userInfo.id
         this.getJobList(0);
@@ -108,7 +113,8 @@ Page({
     },
     //获取职位信息列表数据
     async getJobList(tag) {
-        const result = await request({ url: "/home/jobsFeedback", data: this.Params });
+        var that=this
+        const result = await request({ url: "/job/job/jobsFeedback", data: this.Params,header: that.Authorization });
         // console.log(result)
         // 计算总页数
         this.totalPages= result.pages;

@@ -118,7 +118,7 @@ Page({
     },
     async confirmPublish() {
         this.setJobComId()
-        const result = await request({ url: "/own/home/saveJob", data: this.job, method: 'POST', header: { "Content-Type": "application/x-www-form-urlencoded",
+        const result = await request({ url: "/own/job/saveJob", data: this.job, method: 'POST', header: { "Content-Type": "application/x-www-form-urlencoded",
         "apiIdempotentToken":this.data.apiIdempotentToken } });
         console.log(result)
         wx.navigateBack({

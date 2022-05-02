@@ -56,7 +56,7 @@ Page({
         }, 1000);
     },
     async qsearch() {
-        const res = await request({ url: "/home/qsearch", data: this.QueryParams });
+        const res = await request({ url: "/own/job/jobsearch", data: this.QueryParams });
         console.log(res);
         this.setData({
             goods: res

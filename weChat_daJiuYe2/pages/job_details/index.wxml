@@ -41,14 +41,7 @@
     </view>
 </navigator>
 <view class="job_desc">
-    <view class="desc_title">岗位描述</view>
-    <view class="desc_details">
-        <!-- <rich-text nodes="{{jobObj.jobDesc1}}"></rich-text> -->
-        <text>{{jobObj.jobDetails}}</text>
-    </view>
-</view>
-<view class="job_desc">
-    <view class="desc_title">岗位职责</view>
+    <view class="desc_title">岗位详情</view>
     <view class="desc_details">
         <rich-text nodes="{{jobObj.jobDetails}}"></rich-text>
         <!-- <text>{{jobObj.jobDetails}}</text> -->

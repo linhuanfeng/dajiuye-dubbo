@@ -1,4 +1,4 @@
-# dajiuye-cloud
+# dajiuye-dubbo
 
 #### 介绍
 该小程序集求职和招聘为一体，主要功能包括招聘信息的推荐与分类，即时通讯，职位搜索，面经题库展示，简历上传和下载，职位的发布与审核，就业课程秒杀
@@ -15,7 +15,7 @@
 
 #### 后端技术
 
-SpringCloud+SpringBoot+MySQL+Redis+RabbitMQ+WebSockket+SpringSecurity+JWT 
+Dubbo+SpringBoot+Zookeeper++RabbitMQ+WebSockket+Redis+SpringSecurity+JWT 
 
 1、使用Token机制+Redis（Lua）解决了接口幂等性问题，使用SpringSecurity控制资源访问权限 
 
@@ -28,4 +28,8 @@ SpringCloud+SpringBoot+MySQL+Redis+RabbitMQ+WebSockket+SpringSecurity+JWT
 ### 下载安装
 weChat_daJiuYe2为小程序代码，其他为后端代码
 
+更改zookeeper地址，数据库地址，rabbitmq地址即可成功
+
 可加微信号`moon5672369`免费咨询
+
+

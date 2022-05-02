@@ -1,27 +1,4 @@
-/*
-1 发送请求获取数据
-2 点击轮播图 预览大图
-    1 给轮播图绑定点击事件
-    2 调用小程序的api previewImage
-3 点击 加入购物车
-    1 先绑定点击事件
-    2 获取缓存中的购物车数据 数组格式
-    3 先判断 当前的商品是否存在于 购物车
-    4 已经存在 修改商品数据 执行购物车数量++ 重新把购物车数组 填充回缓存中
-    5 不存在于购物车的数组中 直接给购物车添加一个新元素 新元素带上购买属性 num 重新把购物车数组 填充回缓存中
-    6 弹出提示
-4 商品收藏
-    1 页面onShow的时候 加载缓存中的商品收藏数据
-    2 判断当前商品是不是被收藏
-        1 是 改变图标
-        2 不是 。。
-    3 点击商品收藏按钮
-        1 判断该商品是否存在于缓存中
-        2 已经存在 把该商品删除
-        3 没有存在 把该商品添加到收藏数组中 存入缓存中即可
-*/
 import { request } from "../../requests/index.js";
-import regeneratorRuntime from '../../lib/runtime/runtime';
 const httputil = require("../../utils/httputil.js") //一定要引入，根据你自己写的上传文件路径
 var out_photo = "";
 Page({
@@ -95,7 +72,7 @@ Page({
         },
         // 获取职位详情数据
         async getJobDetail(jobId) {
-            const result = await request({ url: "/home/jobdata", data: { jobId } });
+            const result = await request({ url: "/own/job/jobdata", data: { jobId } });
             console.log(result);
             this.jobInfoStorage = result.list[0];
             // 1 获取缓存中的商品收藏的数组
@@ -110,7 +87,7 @@ Page({
         // 获取相似职位详情数据
         async getSimilarJobDetail(jobId) {
             const { isSimilar } = "1";
-            const result = await request({ url: "/home/jobdata", data: { jobId, isSimilar } });
+            const result = await request({ url: "/own/job/jobdata", data: { jobId, isSimilar } });
             this.setData({
                 similarJobs: result.list
             })

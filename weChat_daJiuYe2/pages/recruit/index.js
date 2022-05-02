@@ -1,5 +1,6 @@
 //0 引入用来发送请求的方法 一定要把路径补全
 import { request } from "../../requests/index.js";
+var app = getApp() // 获取全局app对象
 Page({
     data: {
         // 用户数组
@@ -41,11 +42,13 @@ Page({
         state: "0"
     },
     totalPages:1,
-    //options(Object) 页面开始加载就会触发
+    Authorization: {
+        token: 'asda'
+    },
     onLoad: function (options) {
+        this.Authorization.token = app.globalData.token
     },
     onShow(e){
-
         // 重置请求参数
         this.resetParams2()
         const userInfo = wx.getStorageSync('userInfo')
@@ -145,7 +148,8 @@ Page({
     },
     //获取职位信息列表数据 tag=0 表示重新清洗数组，1把数据添加到数组
     async getUsersList(tag) {
-        const result = await request({ url: "/own/user/getusers", data:this.Params2 });
+        var that=this
+        const result = await request({ url: "/user/user/getusers", data:this.Params2,header: that.Authorization });
         this.totalPages = result.pages;
         if(tag==1){
             this.setData({

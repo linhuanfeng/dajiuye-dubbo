@@ -1,26 +1,14 @@
-/*
-1 当页面被打开的时候 onShow
-    0 onshow 不同于onload 无法在形参上接受 options参数
-    0.5 判断缓存中有没有token
-        1 没有 直接跳转到授权页面
-        2 有 直接往下进行
-    1 获取url上的参数type
-    2 根据type来决定页面标题的数组元素 哪个被激活选中
-    2 根据type值发送请求获取订单数据
-    3 渲染页面
-2 点击不同数据 重新发送请求获取和渲染数据
-
-*/
 import { request } from "../../requests/index.js";
+var app = getApp() // 获取全局app对象
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
         submit_stat: "收藏",
         isCollect_com: false,
-        comObj: [],
+        comObj: {},
+        jobList:{},
         tabs: [{
                 id: 0,
                 value: "公司介绍",
@@ -32,6 +20,13 @@ Page({
                 isActive: false
             }
         ],
+    },
+    Authorization: {
+        token: 'asda'
+    },
+    onLoad: function (options) {
+        this.Authorization.token = app.globalData.token
+        this.getComDetail(options.comId);
     },
     // 公司信息全局对象
     comInfoStorage: {},
@@ -74,11 +69,15 @@ Page({
         })
     },
     // 获取订单列表的方法
-    async getOrders(type) {
-        const res = await request({ url: "/own/my/orders/all", data: { type } })
-        this.setData({
-            // orders: res.orders
-        })
+    async setList(idx,comId) {
+        var that=this
+        if(idx===2){
+            const result = await request({ url: "/job/job/jobByComId",data: {comId },header: that.Authorization });
+            console.log(result)
+            this.setData({
+                jobList:result.list
+            })
+        }
     },
     // 根据标题的索引来激活选中 标题数组
     changeTitleByIndex(index) {
@@ -95,11 +94,12 @@ Page({
         const { index } = e.detail;
         this.changeTitleByIndex(index);
         // 2 重新发送请求
-        this.getOrders(index + 1);
+        this.setList(index + 1,this.data.comObj.comId);
     },
     // 获取公司主页数据
     async getComDetail(comId) {
-        const result = await request({ url: "/own/home/comdata", data: { comId } });
+        var that=this
+        const result = await request({ url: "/job/company/comdata", data: { comId },header: that.Authorization });
         if (result.length != 1) {
             console.log("公司主页获取异常，公司数量不等于1")
         }
@@ -122,13 +122,5 @@ Page({
                 submit_stat: "已被收藏"
             })
         }
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
-        // console.log("onload:"+options);
-        this.getComDetail(options.comId);
-
     }
 })

@@ -1,5 +1,9 @@
 //0 引入用来发送请求的方法 一定要把路径补全
-import { request } from "../../requests/index.js";
+import {
+    request
+} from "../../requests/index.js";
+var app = getApp()
+const constants = require('../../common/constants')
 Page({
     data: {
         // 轮播图数组
@@ -30,6 +34,9 @@ Page({
             }
         ],
     },
+    Authorization: {
+        token: 'asda'
+    },
     // 分页需要的参数
     QueryParams: {
         query: "",
@@ -39,27 +46,52 @@ Page({
         // 职位类型
         jobType: "1"
     },
-    totalPages:0,
+    totalPages: 0,
     //options(Object) 页面开始加载就会触发
-    onLoad: function(options) {
-        // 1 发生异步请求获取轮播图数据 优化的手段可以通过es6的 promise来解决这个问题
+    onLoad: function (options) {
+        this.setToken();
+    },
+    doLoadFunc(){
         this.getSwiperList();
         this.getCatesList();
         this.getJobList(0);
     },
-
-    //WXML 数据绑定：用于父组件（页面模板）向子组件（组件模板）的指定属性设置数据，仅能设置 JSON 兼容数据。
-    // 事件：用于子组件向父组件传递数据，可以传递任意数据。
-    // 如果以上两种方式不足以满足需要，父组件还可以通过 this.selectComponent 方法获取子组件实例对象，这样就可以直接访问组件的任意数据和方法。
-    // 这个是由子组件触发的
+    //设置token保证异步拿到token
+    setToken() {
+        var that=this
+        if (!app.globalData.token) {
+            wx.login({
+                success(res) {
+                    // 发起网络请求
+                    wx.request({
+                        url: constants.API_BASE_URL + "/user/wx/openid",
+                        data: {
+                            code: res.code
+                        },
+                        success(res) {
+                            that.Authorization.token=res.data.message.token
+                            that.doLoadFunc();
+                        }
+                    })
+                }
+            })
+        }else{
+            that.doLoadFunc();
+        }
+        this.Authorization.token = app.globalData.token
+    },
     handleTabsItemChange(e) {
         // 重置
-        this.QueryParams.pageNo=1
-        this.totalPages=1
+        this.QueryParams.pageNo = 1
+        this.totalPages = 1
         // 1 获取被点击的标题索引
-        const { index } = e.detail;
+        const {
+            index
+        } = e.detail;
         // // 修改源数组
-        let { tabs } = this.data;
+        let {
+            tabs
+        } = this.data;
         tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false);
         let type = "";
         if (index == 0) {
@@ -79,7 +111,7 @@ Page({
         })
         this.getJobList(0);
     },
-    onReachBottom: function() {
+    onReachBottom: function () {
         // 1  判断还有没有下一页数据
         if (this.QueryParams.pageNo >= this.totalPages) {
             // 没有下一页数据
@@ -116,7 +148,12 @@ Page({
 
     // 获取轮播图数据
     async getSwiperList() {
-        const result = await request({ url: "/own/home/swiperdata" });
+        console.log(this.Authorization)
+        var that = this
+        const result = await request({
+            url: "/swipper/swipper/swiperdata",
+            header: that.Authorization
+        });
         this.setData({
             swiperList: result
         })
@@ -124,25 +161,34 @@ Page({
 
     //获取分类导航栏数据
     async getCatesList() {
-        const result = await request({ url: "/own/home/catitems" });
+        var that = this
+        const result = await request({
+            url: "/swipper/swipper/catitems",
+            header: that.Authorization
+        });
         this.setData({
             catesList: result
         })
     },
     //获取职位信息列表数据
     async getJobList(tag) {
-        const result = await request({ url: "/own/home/jobdata", data: this.QueryParams });
+        var that = this
+        const result = await request({
+            url: "/job/job/jobdata",
+            data: this.QueryParams,
+            header: that.Authorization
+        });
         // console.log(result)
         // 计算总页数
-        this.totalPages= result.pages;
-        if(tag==1){
+        this.totalPages = result.pages;
+        if (tag == 1) {
             this.setData({
                 // jobList: result.data.message
                 // 拼接数组
                 jobList: [...this.data.jobList, ...result.list]
             });
             wx.stopPullDownRefresh();
-        }else{
+        } else {
             this.setData({
                 // 更新数组
                 jobList: result.list
@@ -150,7 +196,7 @@ Page({
         }
     },
     //item(index,pagePath,text)
-    onTabItemTap: function(item) {
+    onTabItemTap: function (item) {
 
     },
     handleBindSuccess() {

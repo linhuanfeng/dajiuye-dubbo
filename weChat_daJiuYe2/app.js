@@ -19,14 +19,16 @@ App({
         if (res.code) {
           // 发起网络请求
           wx.request({
-            url: constants.API_BASE_URL+"/own/wx/openid",
+            url: constants.API_BASE_URL+"/user/wx/openid",
             data: {
               code: res.code
             },
             success(res) {
               console.log("获取openId成功")
+              // 顺便得到了token,batoken放入缓存中
               console.log(res)
-              let openid = res.data.message
+              that.globalData.token=res.data.message.token
+              let openid = res.data.message.openId
               if (openid.length > 0) {
                 that.globalData.openid = openid
                 that.initSocket();
@@ -58,6 +60,7 @@ App({
     })
   },
   globalData: {
+    token:'',
     openid: '111',
     isIpx: false, //是否为iPhone x
     socketClient: null,
@@ -108,7 +111,7 @@ App({
       wx.connectSocket({
         url: constants.WEBSOCKET_URL,
         header: {
-          token: "lihaoyang" //从服务端获取一个token，服务端验证token是否允许连接,案例中没做限制
+          token: that.globalData.token //从服务端获取一个token，服务端验证token是否允许连接,案例中没做限制
         }
       })
     }
@@ -173,13 +176,14 @@ App({
 
     stompClient.connect({}, function (callback) {
       // 订阅自己的
+      console.log("开始订阅/user/"+that.globalData.openid)
       stompClient.subscribe('/user/' + that.globalData.openid + '/private', function (message, headers) {
         // stompClient.subscribe('/user/public', function (message, headers) {
         console.log('收到只发送给我的消息:', message);
         that.globalData.socketReceiver(JSON.parse(message.body));
         // 通知服务端收到消息
         message.ack();
-      });
+      }); 
     })
   },
 

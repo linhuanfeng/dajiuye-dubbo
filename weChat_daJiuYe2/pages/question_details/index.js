@@ -94,7 +94,7 @@ Page({
         },
         // 获取职位详情数据
         async getJobDetail(jobId) {
-            const result = await request({ url: "/home/jobdata", data: { jobId } });
+            const result = await request({ url: "/own/job/jobdata", data: { jobId } });
             console.log(result);
             this.jobInfoStorage = result.list[0];
             // 1 获取缓存中的商品收藏的数组
@@ -109,7 +109,7 @@ Page({
         // 获取相似职位详情数据
         async getSimilarJobDetail(jobId) {
             const { isSimilar } = "1";
-            const result = await request({ url: "/home/jobdata", data: { jobId, isSimilar } });
+            const result = await request({ url: "/own/job/jobdata", data: { jobId, isSimilar } });
             this.setData({
                 similarJobs: result.list
             })

@@ -1,4 +1,5 @@
 import { request } from "../../requests/index.js";
+var app = getApp()
 Page({
 
     /**
@@ -18,24 +19,22 @@ Page({
         Cates2: [],
     },
 
-    bindscrolltoupper() {
-        // console.log("top..")
-    },
-
-    scrollTop() {
-        // console.log("scroll..");
+    Authorization: {
+        token: 'asda'
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        this.Authorization.token = app.globalData.token
         this.getCates2();
     },
     onShow: function() {},
     //获取分类数据
     async getCates2() {
-        const result = await request({ url: "/own/school/jobcatdata" });
+        var that=this
+        const result = await request({ url: "/job/category/jobcatdata",header: that.Authorization });
         // console.log(result)
         this.setData({
             Cates2: result

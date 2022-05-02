@@ -1,6 +1,6 @@
 import { request } from "../../requests/index.js";
+var app = getApp() // 获取全局app对象
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -29,13 +29,8 @@ Page({
             }
         ],
     },
-
-    bindscrolltoupper() {
-        // console.log("top..")
-    },
-
-    scrollTop() {
-        // console.log("scroll..");
+    Authorization: {
+        token: 'asda'
     },
     // 分页需要的参数
     QueryParams: {
@@ -49,7 +44,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        console.log(options)
+        this.Authorization.token = app.globalData.token
         this.QueryParams.cid = options.cid
         this.getJobList(this.QueryParams);
     },
@@ -121,7 +116,8 @@ Page({
     },
     //获取职位信息列表数据
     async getJobList(QueryParams) {
-        const result = await request({ url: "/own/home/jobdata2", data: QueryParams, method: 'POST', header: { "Content-Type": "application/x-www-form-urlencoded" } });
+        var that=this
+        const result = await request({ url: "/job/job/jobdata2", data: QueryParams, method: 'POST', header:that.Authorization});
         // console.log(result)
         const total = result.total;
         // 计算总页数
