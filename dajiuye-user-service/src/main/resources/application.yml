@@ -2,4 +2,4 @@ spring:
   profiles:
     active: dev
   application:
-    name: dajiuye-swipper-service
+    name: dajiuye-user-service

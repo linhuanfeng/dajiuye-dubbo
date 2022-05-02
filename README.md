@@ -26,9 +26,15 @@ Dubbo+SpringBoot+Zookeeper++RabbitMQ+WebSockket+Redis+SpringSecurity+JWT
 4、基于Redis缓存热点职位，并使用分布式锁Redisson解决缓存击穿问题，并搭建Redis-Cluster集群提高扩展性和可用性
 
 ### 下载安装
+#### 前端
 weChat_daJiuYe2为小程序代码，其他为后端代码
 
-更改zookeeper地址，数据库地址，rabbitmq地址即可成功
+#### 后端
+1、导入数据库，并更改数据库地址
+
+2、更改zookeeper地址，rabbitmq地址，redis地址
+
+3、运行项目成功
 
 可加微信号`moon5672369`免费咨询
 
