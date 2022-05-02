@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.lhf.dajiuye</groupId>
+    <artifactId>dajiuye-user-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>dajiuye-user-service</name>
+    <description>Demo project for Spring Boot</description>
+
+    <parent>
+        <groupId>com.lhf.dajiuye</groupId>
+        <artifactId>dajiuye</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!--dubbo远程调用 api-->
+        <dependency>
+            <groupId>com.lhf.dajiuye</groupId>
+            <artifactId>dajiuye-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--阿里云oss-->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>2.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <!--引入切面-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!--七牛-->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>7.2.7</version>
+        </dependency>
+        <!--Jwt 使用HS256-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.7.RELEASE</version>
+                <configuration>
+                    <mainClass>com.lhf.dajiuye.user.service.DajiuyeUserServiceApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
