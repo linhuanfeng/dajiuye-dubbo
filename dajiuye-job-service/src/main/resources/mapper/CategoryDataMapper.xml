@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace和mapper里面接口方法全限定名对应好就可以自动联系-->
 <mapper namespace="com.lhf.dajiuye.job.service.mapper.CategotyMapper">
-    <select id="getLargeCatDataList" resultType="com.lhf.dajiuye.api.bean.LCategory">
+    <select id="getLargeCatDataList" resultType="com.lhf.dajiuye.api.bean.job.LCategory">
         select * from lcategory
     </select>
-    <select id="getMiddleCatDataList" resultType="com.lhf.dajiuye.api.bean.MCategory">
+    <select id="getMiddleCatDataList" resultType="com.lhf.dajiuye.api.bean.job.MCategory">
         select * from mcategory
     </select>
-    <select id="getSmallCatDataList" resultType="com.lhf.dajiuye.api.bean.SCategory">
+    <select id="getSmallCatDataList" resultType="com.lhf.dajiuye.api.bean.job.SCategory">
         select * from scategory
     </select>
 </mapper>

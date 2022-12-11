@@ -1,10 +1,14 @@
 # dubbo服务配置
 dubbo:
   registry:
-    address: zookeeper://192.168.42.101:2181
+    address: zookeeper://192.168.42.100:2181
+    use-as-config-center: true # 如果没有配置中心和元数据中心，默认使用注册中心作为配置中心和元数据中心
+    use-as-metadata-center: true # 元数据中心是注册中心的扩展：接口与应用的映射；承载服务元数据和接口配置信息
   protocol:
     name: dubbo
-    port: 7070
+    port: 7072
+  application:
+    name: dajiuye-swipper-service # dubbo服务应用名称，默认是application.name
 spring:
   # MySQL配置
   datasource:

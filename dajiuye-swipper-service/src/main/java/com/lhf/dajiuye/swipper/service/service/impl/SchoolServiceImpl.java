@@ -1,15 +1,16 @@
 package com.lhf.dajiuye.swipper.service.service.impl;
 
-import com.lhf.dajiuye.api.bean.School;
+import com.lhf.dajiuye.api.bean.swipper.School;
 import com.lhf.dajiuye.api.service.swipper.SchoolService;
 import com.lhf.dajiuye.swipper.service.mapper.SchoolDataMapper;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @DubboService(interfaceClass = SchoolService.class,version = "1.0.0")
-public class SchoolServiceImpl implements SchoolService {
+public class SchoolServiceImpl implements SchoolService,InitializingBean {
 
     @Autowired
     private SchoolDataMapper schoolDataMapper;
@@ -23,5 +24,10 @@ public class SchoolServiceImpl implements SchoolService {
     public List<School> getSchoolDataList(int schoolId) {
         List<School> schoolDataList = schoolDataMapper.getSchoolDataList(schoolId);
         return schoolDataList;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
     }
 }

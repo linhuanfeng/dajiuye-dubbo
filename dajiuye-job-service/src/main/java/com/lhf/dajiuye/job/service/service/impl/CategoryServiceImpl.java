@@ -1,8 +1,8 @@
 package com.lhf.dajiuye.job.service.service.impl;
 
-import com.lhf.dajiuye.api.bean.LCategory;
-import com.lhf.dajiuye.api.bean.MCategory;
-import com.lhf.dajiuye.api.bean.SCategory;
+import com.lhf.dajiuye.api.bean.job.LCategory;
+import com.lhf.dajiuye.api.bean.job.MCategory;
+import com.lhf.dajiuye.api.bean.job.SCategory;
 import com.lhf.dajiuye.api.service.job.CategoryService;
 import com.lhf.dajiuye.job.service.mapper.CategotyMapper;
 import org.apache.dubbo.config.annotation.DubboService;

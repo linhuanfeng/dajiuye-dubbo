@@ -19,6 +19,8 @@
         <option value="$PROJECT_DIR$/dajiuye-message-service/pom.xml" />
         <option value="$PROJECT_DIR$/dajiuye-web-app/pom.xml" />
         <option value="$PROJECT_DIR$/dajiuye-acl-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-seckill-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dajiuye-token-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -28,5 +30,5 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

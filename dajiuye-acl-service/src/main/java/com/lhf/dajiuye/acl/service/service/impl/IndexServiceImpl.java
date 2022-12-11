@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.acl.service.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 import com.lhf.dajiuye.api.bean.acl.Role;
 import com.lhf.dajiuye.api.service.acl.IndexService;
 import com.lhf.dajiuye.api.service.acl.PermissionService;

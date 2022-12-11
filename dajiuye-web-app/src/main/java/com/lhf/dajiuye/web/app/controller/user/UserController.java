@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.lhf.dajiuye.api.bean.CommonResult2;
 import com.lhf.dajiuye.api.bean.Meta;
 import com.lhf.dajiuye.api.bean.Params2;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 import com.lhf.dajiuye.api.service.user.MyUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;

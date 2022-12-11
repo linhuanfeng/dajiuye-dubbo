@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.user.service.mapper;
 
-import com.lhf.dajiuye.api.bean.Userdeliver;
+import com.lhf.dajiuye.api.bean.user.Userdeliver;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;

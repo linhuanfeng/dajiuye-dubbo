@@ -87,6 +87,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/user/wx/**").permitAll() // 登录不用拦截
+                .antMatchers("/user/oss/**").permitAll()
+                .antMatchers("/job/job/es/**").permitAll()
+                /*swagger*/
+                .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/v3/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
 //                .antMatchers("/own/user/handleWXMsg").anonymous()
 //                .antMatchers("/acl/user/save").anonymous()
 //                .antMatchers("/own/home/swiperdata").anonymous()

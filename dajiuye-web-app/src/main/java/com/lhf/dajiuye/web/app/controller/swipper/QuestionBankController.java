@@ -1,0 +1,85 @@
+package com.lhf.dajiuye.web.app.controller.swipper;
+
+import com.hu.health.common.utils.PageUtils;
+import com.hu.health.common.utils.R;
+import com.lhf.dajiuye.api.bean.CommonResult;
+import com.lhf.dajiuye.api.bean.Meta;
+import com.lhf.dajiuye.api.bean.swipper.InterviewBank;
+import com.lhf.dajiuye.api.bean.swipper.QuestionBank;
+import com.lhf.dajiuye.api.service.swipper.InterviewBankService;
+import com.lhf.dajiuye.api.service.swipper.QuestionBankService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+@RestController
+@RequestMapping("/swipper/question")
+@Slf4j
+public class QuestionBankController {
+
+    @DubboReference(interfaceClass = QuestionBankService.class,version = "1.0.0",check = false,retries = 0,timeout =10000 )
+    private QuestionBankService questionBankService;
+
+    /**
+     * 列表
+     */
+    @GetMapping("/list")
+    // @RequiresPermissions("community:area:list")
+    public Object list(@RequestParam Map<String, Object> params){
+        PageUtils page = questionBankService.queryPage(params);
+        List<?> list = page.getList();
+        List<QuestionBank> collect = list.stream().map(o -> (QuestionBank) o).collect(Collectors.toList());
+        return new CommonResult<QuestionBank>(collect,new Meta("获取成功",200));
+    }
+
+
+
+    /**
+     * 信息
+     */
+    @GetMapping("/info/{id}")
+    // @RequiresPermissions("community:area:info")
+    public R info(@PathVariable("id") Long id){
+        QuestionBank questionBank = questionBankService.getById(id);
+
+        return R.ok().put("questionBank", questionBank);
+    }
+
+    /**
+     * 保存
+     */
+    @PostMapping("/save")
+    // @RequiresPermissions("community:area:save")
+    public R save(@RequestBody QuestionBank questionBank){
+        questionBankService.save(questionBank);
+
+        return R.ok();
+    }
+
+    /**
+     * 修改
+     */
+    @PostMapping("/update")
+    // @RequiresPermissions("community:area:update")
+    public R update(@RequestBody QuestionBank questionBank){
+        questionBankService.updateById(questionBank);
+
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @GetMapping("/delete")
+    // @RequiresPermissions("community:area:delete")
+    public R delete(@RequestBody Long[] ids){
+        questionBankService.removeByIds(Arrays.asList(ids));
+
+        return R.ok();
+    }
+}

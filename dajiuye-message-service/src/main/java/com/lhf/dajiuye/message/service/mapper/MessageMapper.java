@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.message.service.mapper;
 
-import com.lhf.dajiuye.api.bean.Message;
-import com.lhf.dajiuye.api.bean.MessageDetail;
+import com.lhf.dajiuye.api.bean.chat.Message;
+import com.lhf.dajiuye.api.bean.chat.MessageDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

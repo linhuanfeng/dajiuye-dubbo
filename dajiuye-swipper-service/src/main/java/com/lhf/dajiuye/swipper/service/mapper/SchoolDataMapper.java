@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.swipper.service.mapper;
 
-import com.lhf.dajiuye.api.bean.School;
+import com.lhf.dajiuye.api.bean.swipper.School;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,11 +14,8 @@ public interface SchoolDataMapper {
      * @param schId
      * @return
      */
-    @Select("<script>        select * from school\n" +
-            "        <where>\n" +
-            "            <if test=\"schId!=0\">\n" +
-            "                and schId=1\n" +
-            "            </if>\n" +
-            "        </where></script>")
+    @Select("<script>select * from school\n" +
+            "        <where> schId=#{schId}"+
+                    "</where></script>")
     List<School> getSchoolDataList(int schId);
 }

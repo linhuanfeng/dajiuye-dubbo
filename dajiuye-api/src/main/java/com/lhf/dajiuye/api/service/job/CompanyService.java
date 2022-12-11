@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.api.service.job;
 
 
-import com.lhf.dajiuye.api.bean.Company;
+import com.lhf.dajiuye.api.bean.job.Company;
 
 import java.util.List;
 

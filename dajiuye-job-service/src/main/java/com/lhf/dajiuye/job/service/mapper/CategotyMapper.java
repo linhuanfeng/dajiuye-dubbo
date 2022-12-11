@@ -1,8 +1,8 @@
 package com.lhf.dajiuye.job.service.mapper;
 
-import com.lhf.dajiuye.api.bean.LCategory;
-import com.lhf.dajiuye.api.bean.MCategory;
-import com.lhf.dajiuye.api.bean.SCategory;
+import com.lhf.dajiuye.api.bean.job.LCategory;
+import com.lhf.dajiuye.api.bean.job.MCategory;
+import com.lhf.dajiuye.api.bean.job.SCategory;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

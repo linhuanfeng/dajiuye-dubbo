@@ -2,7 +2,7 @@ package com.lhf.dajiuye.job.service.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lhf.dajiuye.api.bean.Job;
+import com.lhf.dajiuye.api.bean.job.Job;
 import com.lhf.dajiuye.api.bean.Params;
 import org.apache.ibatis.annotations.*;
 
@@ -11,39 +11,47 @@ import java.util.List;
 @Mapper
 public interface JobDataMapper extends BaseMapper<Job> {
 
+    /**
+     * 职位保存
+     * @param job
+     */
     @Insert("insert into job(jobId,jobName,jobIndustry,jobPlace,jobEdu,jobDetails,jobSalary,email,jobType,jobComId,jobReleaseTime,jobAuthorId) values("+
         "#{jobId},#{jobName},#{jobIndustry},#{jobPlace},#{jobEdu},#{jobDetails},#{jobSalary},#{email},#{jobType},#{jobComId},#{jobReleaseTime},#{jobAuthorId})")
     void saveJob(Job job);
 
     /**
-     * 获取职位信息列表数据(有Id则查找单个)
-     * 注意这里多个参数得加@Param
+     * 获取职位列表（jobType）
      * jobType:1实习 2校招 3社招
      *
      * @param
      * @return
      */
     @Select("<script>select * from job j,company c where j.jobComId=c.comId " +
-            "<if test='\"\"!=jobId'>and jobId!=#{jobId} </if>" +
+//            "<if test='\"\"!=jobId'>and jobId!=#{jobId} </if>" +
 //            "<if test='\"\"!=#{jobId} and \"\"==#{isSimilar}'>and jobId=#{jobId} </if>" +
-            "<if test='null!=params.jobType'>and j.jobType=#{params.jobType} </if>" +
-            "order by jobReleaseTime desc</script>")
+            "<if test='-1!=params.jobType'>where j.jobType=#{jobType} </if> " +
+            "order by jobReleaseTime desc </script>")
     @ResultMap("com.lhf.dajiuye.job.service.mapper.JobDataMapper.jobMap") // 引用映射
-    List<Job> getJobDataList(@Param("jobId") String jobId, @Param("params") Params params);
+    List<Job> getJobs( @Param("params") Params params);
 
     /**
-     * 根据职位分类cid返回职位列表
+     * 获取职位列表（cid,jobType）
      * @param params
      * @return
      */
     @Select("<script>select * from job j,company c " +
-            "where j.jobComId=c.comId and jobSid=#{cid} <if test=\"null!=jobType\">and jobType=#{jobType} </if> " +
-            "order by jobReleaseTime desc</script>")
+            "where j.jobComId=c.comId and jobSid=#{cid} <if test=\"-1!=jobType\">and jobType=#{jobType} </if> " +
+            "order by jobReleaseTime desc limit #{pageNum},#{pageSize}</script>")
     @ResultMap("com.lhf.dajiuye.job.service.mapper.JobDataMapper.jobMap") // 引用映射
-    List<Job> getJobDataList2(Params params);
+    List<Job> getJobsByCid(Params params);
+//    @Select("<script>select * from job j,company c " +
+//            "where j.jobComId=c.comId and jobSid=#{cid} " +
+//            "order by jobReleaseTime</script>")
+//    @ResultMap("com.lhf.dajiuye.job.service.mapper.JobDataMapper.jobMap") // 引用映射
+//    List<Job> getJobDataList2(Params params);
 
     /**
-     * 根据公司comId返回职位列表
+     * 获取职位列表（comId）
      * @param comId
      * @return
      */
@@ -51,10 +59,10 @@ public interface JobDataMapper extends BaseMapper<Job> {
             "where j.jobComId=#{comId} " +
             "order by jobReleaseTime desc</script>")
     @ResultMap("com.lhf.dajiuye.job.service.mapper.JobDataMapper.jobMap") // 引用映射
-    List<Job> getJobDataListByComId(String comId);
+    List<Job> getJobsByComId(String comId);
 
     /**
-     * 根据职位分类cid返回职位列表
+     * 获取职位（jobId）
      * @param jobId
      * @return
      */
@@ -74,10 +82,20 @@ public interface JobDataMapper extends BaseMapper<Job> {
     @ResultMap("com.lhf.dajiuye.job.service.mapper.JobDataMapper.jobMap") // 引用映射
     List<Job> getJobsFeedback(@Param("userId") String userId, @Param("state") int state);
 
+    /**
+     * 职位搜索（jobComId,jobName）
+     * @param params
+     * @return
+     */
     @Select("Select * from job j,company c where j.jobComId=c.comId and jobName like concat('%',#{query},'%') order by jobReleaseTime desc")
     @ResultMap("com.lhf.dajiuye.job.service.mapper.JobDataMapper.jobMap") // 引用映射
     List<Job> qSearch(Params params);
 
+    /**
+     * 职位定制查询（jobType，jobPlace，jobName）
+     * @param job
+     * @return
+     */
     @Select("<script>Select * from job j,company c where j.jobComId=c.comId " +
             "<if test='null!=jobType'>and jobType=#{jobType} </if>  " +
             "<if test='\"\"!=jobPlace'>and jobPlace=#{jobPlace} </if> " +

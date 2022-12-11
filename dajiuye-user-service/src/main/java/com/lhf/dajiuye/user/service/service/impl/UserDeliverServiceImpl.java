@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.user.service.service.impl;
 
-import com.lhf.dajiuye.api.bean.Userdeliver;
+import com.lhf.dajiuye.api.bean.user.Userdeliver;
 import com.lhf.dajiuye.api.service.user.UserDeliverService;
 import com.lhf.dajiuye.user.service.mapper.UserDeliverMapper;
 import org.apache.dubbo.config.annotation.DubboService;

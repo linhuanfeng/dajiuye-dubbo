@@ -11,8 +11,9 @@ import org.springframework.context.annotation.Configuration;
 
 
 //@EnableRabbit
-@Configuration
+//@Configuration
 @Slf4j
+@Deprecated
 public class RabbitMsgConvertConfig implements ApplicationContextAware {
 
 //    @Bean
@@ -23,6 +24,7 @@ public class RabbitMsgConvertConfig implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         RabbitTemplate rabbitTemplate = applicationContext.getBean(RabbitTemplate.class);
+        // 消息到交换的回调
         rabbitTemplate.setConfirmCallback(((correlationData, ack, cause) -> {
             if(ack){
                 log.info("ack");
@@ -30,7 +32,7 @@ public class RabbitMsgConvertConfig implements ApplicationContextAware {
                 log.error("失败：{}",new String(cause.getBytes()));
             }
         }));
-        // void returnedMessage(ReturnedMessage returned);
+        // 消息到队列的回调
         rabbitTemplate.setReturnCallback((message,replyCode, replyText, exchange,routingKey) ->
                 log.error("setReturnCallback:{}",message));
     }

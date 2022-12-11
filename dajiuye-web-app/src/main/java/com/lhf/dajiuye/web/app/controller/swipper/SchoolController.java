@@ -2,10 +2,10 @@ package com.lhf.dajiuye.web.app.controller.swipper;
 
 import com.lhf.dajiuye.api.bean.CommonResult;
 import com.lhf.dajiuye.api.bean.Meta;
-import com.lhf.dajiuye.api.bean.School;
+import com.lhf.dajiuye.api.bean.swipper.School;
 import com.lhf.dajiuye.api.service.swipper.SchoolService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +27,7 @@ public class SchoolController {
      * @return
      * @throws IOException
      */
-    @RequestMapping("/schooldata")
+    @GetMapping("/schooldata")
     public Object schoolList(@RequestParam(value = "schoolId",required = false,defaultValue = "0") String schId) throws IOException {
         List<School> schoolDataList = schoolService.getSchoolDataList(Integer.parseInt(schId));
         return new CommonResult<School>(schoolDataList,new Meta("获取成功",200));

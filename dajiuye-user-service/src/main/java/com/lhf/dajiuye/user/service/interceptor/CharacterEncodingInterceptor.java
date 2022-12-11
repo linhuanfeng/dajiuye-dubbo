@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 自定义字符集拦截器，不过不知道为什么没有用，response还是中文乱码
  */
+@Deprecated
 public class CharacterEncodingInterceptor extends HandlerInterceptorAdapter {
 
     @Override

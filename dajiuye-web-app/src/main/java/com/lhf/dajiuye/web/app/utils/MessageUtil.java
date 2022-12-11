@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.web.app.utils;
 
-import com.lhf.dajiuye.api.bean.MessageDetail;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.chat.MessageDetail;
+import com.lhf.dajiuye.api.bean.user.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

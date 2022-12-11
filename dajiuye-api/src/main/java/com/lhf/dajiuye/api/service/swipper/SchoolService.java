@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.api.service.swipper;
 
-import com.lhf.dajiuye.api.bean.School;
+import com.lhf.dajiuye.api.bean.swipper.School;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.user.service.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.lhf.dajiuye.api.bean.Job;
+import com.lhf.dajiuye.api.bean.job.Job;
 import com.lhf.dajiuye.api.bean.Params;
 import com.lhf.dajiuye.user.service.constants.JobConstants;
 import org.springframework.beans.factory.annotation.Autowired;

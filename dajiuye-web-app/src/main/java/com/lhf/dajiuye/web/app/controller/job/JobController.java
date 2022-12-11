@@ -2,8 +2,17 @@ package com.lhf.dajiuye.web.app.controller.job;
 
 import com.github.pagehelper.PageInfo;
 import com.lhf.dajiuye.api.bean.*;
+import com.lhf.dajiuye.api.bean.job.Job;
+import com.lhf.dajiuye.api.constant.JobMqConstants;
 import com.lhf.dajiuye.api.service.job.JobDataService;
+import com.lhf.dajiuye.api.service.message.KafkaService;
+import com.lhf.dajiuye.api.service.user.ApiIdempotent;
+import com.lhf.dajiuye.web.app.log.SysLogAnnotation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -11,44 +20,98 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/job/job")
+@Slf4j
 public class JobController {
 
     @DubboReference(interfaceClass = JobDataService.class,version = "1.0.0",check = false)
     private JobDataService jobDataService;
 
+    @DubboReference(interfaceClass = KafkaService.class,version = "1.0.0",check = false)
+    private KafkaService kafkaService;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
     @PostMapping("/saveJob")
-    public Object saveJob(@ModelAttribute("job") Job job){
+    @ApiIdempotent
+    @PreAuthorize("hasAuthority('job:create')")
+    @SysLogAnnotation
+    public Object save(@RequestBody Job job){
         jobDataService.saveJob(job);
-        return "保存工作成功";
+        return new CommonResult2<String>("success",new Meta("成功",200));
     }
 
     /**
-     * 获取职位信息列表
-     * @param jobId
+     * 获取职位信息列表(mysql)
      * @param params 分页数据
      * @return
      * @throws IOException
      * 参数有jobtype=    空串
      * 参数没有jobtype   null
      */
-    @RequestMapping("/jobdata")
-    public Object jobdata(@RequestParam(value = "jobId",required = false,defaultValue = "") String jobId,
-                          Params params){
-        PageInfo<Job> jobDataList = jobDataService.getJobData(jobId,params);
+    @GetMapping("/jobs")
+    @PreAuthorize("hasAuthority('job:list')")
+    public Object getJobs(Params params){
+        PageInfo<Job> jobDataList = jobDataService.getJobs(params);
+        return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
+    }
+
+    /**
+     * 获取职位信息列表(es)
+     * @param params
+     * @return
+     */
+    @GetMapping("/jobsByEs")
+    @PreAuthorize("hasAuthority('job:list')")
+    @SysLogAnnotation
+    public Object getJobsByEs(Params params){
+        PageInfo<Job> jobDataList = jobDataService.queryByEs(params);
         return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
     }
 
     /**
      * 增加职位热度
+     * 发送到kafka消息
      * @return
      * @throws IOException
-     * 参数有jobtype=    空串
-     * 参数没有jobtype   null
      */
-    @RequestMapping("/addJobScore")
-    public Object incrementJobScore(@RequestParam("jobId") String jobId){
-//        redisService.incrementJobScore(jobId);
+    @PostMapping("/jobView")
+    @SysLogAnnotation
+    public Object jobView(@RequestBody String jobId){
+//        kafkaService.sendMessage(jobId);
+        mqSend(jobId,JobMqConstants.JOB_VIEW_KEY);
         return "增加权值成功";
+    }
+
+    /**
+     * 投递简历，异步执行
+     *
+     * 要发消息给hr通知收到简历
+     * 用户投递次数增加
+     * 职位标记的投递计数也要标记
+     *
+     * @param jobId
+     * @return
+     */
+    @PostMapping("/jobDelivery")
+    @SysLogAnnotation
+    public Object jobDelivery(@RequestBody String jobId){
+//        kafkaService.sendMessage(jobId);
+        mqSend(jobId,JobMqConstants.JOB_DELIVERY_KEY);
+        return "增加权值成功";
+    }
+
+    @PostMapping("/jobCommunicate")
+    @SysLogAnnotation
+    public Object jobCommunicate(@RequestBody String jobId){
+//        kafkaService.sendMessage(jobId);
+        mqSend(jobId, JobMqConstants.JOB_COMMUNICATE_KEY);
+        return "增加权值成功";
+    }
+
+    private void mqSend(String jobId,String routingKey) {
+        // 3.发送消息
+        rabbitTemplate.convertAndSend(JobMqConstants.JOB_EXCHANGE, routingKey, jobId);
     }
 
     /**
@@ -57,6 +120,7 @@ public class JobController {
      * @return
      */
     @GetMapping("job")
+    @SysLogAnnotation
     public Object job(@RequestParam(value = "jobId") String jobId){
         Job job = jobDataService.getJobById(jobId);
         return new CommonResult2<>(job, new Meta("获取成功", 200));
@@ -67,7 +131,8 @@ public class JobController {
      * @param comId
      * @return
      */
-    @GetMapping("/jobByComId")
+    @GetMapping("/jobsByComId")
+    @SysLogAnnotation
     public Object listByCom(@RequestParam(value = "comId") String comId){
         PageInfo<Job> pageInfo = jobDataService.getJobsByComId(new Params(), comId);
         return new CommonResult2<>(pageInfo, new Meta("获取成功", 200));
@@ -81,9 +146,11 @@ public class JobController {
      * @throws IOException
      * ModelAttribute 得用 x-www-form-urlencoded格式 不能用json
      */
-    @PostMapping("/jobdata2")
-    public Object jobdata2(@RequestBody Params params) {
-        PageInfo<Job> jobDataList = jobDataService.getJobData2(params);
+    @PostMapping("/jobsByCid")
+    @PreAuthorize("hasAuthority('job:list')")
+    @SysLogAnnotation
+    public Object jobsByCid(@RequestBody Params params) {
+        PageInfo<Job> jobDataList = jobDataService.getJobsByCid(params);
         return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
     }
 
@@ -97,6 +164,7 @@ public class JobController {
      * @throws IOException
      */
     @GetMapping("/jobsFeedback")
+    @SysLogAnnotation
     public Object jobsFeedback(@RequestParam("pagenum") String pageNum,
                                @RequestParam("pagesize") String pageSize,
                                @RequestParam("userid") String userId,
@@ -106,25 +174,38 @@ public class JobController {
     }
 
     /**
-     * 职位模糊定制
+     * 职位定制
      * @param job
      * @return
      */
-    @PostMapping("/jobCustom")
-    public Object jobCustom(@ModelAttribute("job") Job job){
-        List<Job> jobs = jobDataService.jobsCustom(job);
+    @PostMapping("/jobsCustom")
+    @SysLogAnnotation
+    public Object jobCustom(@RequestBody Job job){
+        List<Job> jobs = jobDataService.getJobsCustom(job);
         return new CommonResult<Job>(jobs,new Meta("职位定制成功",200));
     }
 
     /**
-     * 搜索模糊匹配
+     * 职位模糊匹配（mysql）
      * @param params
      * @return
      * @throws IOException
      */
-    @RequestMapping("/jobsearch")
-    public Object qSearch( Params params) throws IOException {
+    @GetMapping("/jobsSearch")
+    @SysLogAnnotation
+    public Object qSearch( Params params) {
         PageInfo<Job> jobDataList = jobDataService.query(params);
         return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
+    }
+
+    /**
+     * job批量导入es
+     * @return
+     */
+    @GetMapping("/es/insertToEs")
+    @SysLogAnnotation
+    public Object insertToEs() {
+        jobDataService.jobToElasticSearch();
+        return "ok";
     }
 }

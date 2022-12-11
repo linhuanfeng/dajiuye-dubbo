@@ -1,10 +1,11 @@
 package com.lhf.dajiuye.web.app.controller.job;
 
 import com.lhf.dajiuye.api.bean.CommonResult;
-import com.lhf.dajiuye.api.bean.Company;
+import com.lhf.dajiuye.api.bean.job.Company;
 import com.lhf.dajiuye.api.bean.Meta;
 import com.lhf.dajiuye.api.service.job.CompanyService;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ public class CompanyController {
      * @return
      * @throws IOException
      */
-    @RequestMapping("/comdata")
+    @GetMapping("/comdata")
     public Object comdata(@RequestParam(value = "comId",required = false,defaultValue = "") String comId) throws IOException {
         List<Company> comDataList = companyService.getComData(comId);
         return new CommonResult<Company>(comDataList,new Meta("获取成功",200));

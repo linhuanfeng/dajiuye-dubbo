@@ -1,7 +1,7 @@
 # dubbo服务配置
 dubbo:
   registry:
-    address: zookeeper://192.168.42.102:2181
+    address: zookeeper://${host2}:2181
   protocol:
     port: 7030
     name: dubbo
@@ -16,7 +16,7 @@ spring:
 
   # rabbitmq配置
   rabbitmq:
-    host: 192.168.42.100
+    host: ${host2}
     virtual-host: /
     port: 5672
     # 生产端确认回调

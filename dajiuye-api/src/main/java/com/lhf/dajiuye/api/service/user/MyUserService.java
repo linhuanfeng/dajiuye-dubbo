@@ -3,7 +3,7 @@ package com.lhf.dajiuye.api.service.user;
 //import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.PageInfo;
 import com.lhf.dajiuye.api.bean.Params2;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 
 public interface MyUserService {
 

@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.swipper.service.mapper;
 
-import com.lhf.dajiuye.api.bean.CatItems;
-import com.lhf.dajiuye.api.bean.SwiperData;
+import com.lhf.dajiuye.api.bean.swipper.CatItems;
+import com.lhf.dajiuye.api.bean.swipper.SwiperData;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

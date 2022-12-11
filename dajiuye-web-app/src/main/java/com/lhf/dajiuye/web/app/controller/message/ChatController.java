@@ -7,6 +7,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +43,7 @@ public class ChatController {
 //        return "hello2";
 //    }
 
-    @RequestMapping("/publicnotice")
+    @PostMapping("/publicnotice")
     public void publicNotice(@RequestBody MessageDto requestMsg){
         log.info("系统通知：{}",requestMsg);
         messagingTemplate.convertAndSend("/topic/public",requestMsg.getContent()+"--来自"+requestMsg.getFromOpenId());
@@ -50,7 +51,7 @@ public class ChatController {
         rabbitTemplate.convertAndSend(WebSocketRabbitConstants.MESSAGE_TOPIC_EXCHANGE,WebSocketRabbitConstants.MESSAGE_PUBLIC_KEY,requestMsg);
     }
 
-    @RequestMapping("/privatenotice")
+    @PostMapping("/privatenotice")
     public void privateNotice(@RequestBody MessageDto requestMsg){
         log.info("私人通知：{}",requestMsg);
         messagingTemplate.convertAndSendToUser(requestMsg.getToOpenId(),"/private",requestMsg);

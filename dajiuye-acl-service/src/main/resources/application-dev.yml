@@ -1,7 +1,8 @@
+host1: 192.168.42.100
 # dubbo服务配置
 dubbo:
   registry:
-    address: zookeeper://192.168.42.102:2181
+    address: zookeeper://${host1}:2181
   protocol:
     port: 7060
     name: dubbo

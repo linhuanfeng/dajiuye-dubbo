@@ -2,8 +2,8 @@ package com.lhf.dajiuye.api.service.message;
 
 
 
-import com.lhf.dajiuye.api.bean.Message;
-import com.lhf.dajiuye.api.bean.MessageDetail;
+import com.lhf.dajiuye.api.bean.chat.Message;
+import com.lhf.dajiuye.api.bean.chat.MessageDetail;
 
 import java.util.List;
 

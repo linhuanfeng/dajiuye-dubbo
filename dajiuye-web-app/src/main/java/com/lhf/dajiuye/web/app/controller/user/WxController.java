@@ -1,10 +1,12 @@
 package com.lhf.dajiuye.web.app.controller.user;
 
 import com.lhf.dajiuye.api.bean.CommonResult2;
-import com.lhf.dajiuye.api.bean.LoginInfo;
+import com.lhf.dajiuye.api.bean.user.LoginInfo;
 import com.lhf.dajiuye.api.bean.Meta;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 import com.lhf.dajiuye.api.service.user.WxService;
+import com.lhf.dajiuye.web.app.log.SysLog;
+import com.lhf.dajiuye.web.app.log.SysLogAnnotation;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +39,14 @@ public class WxController {
     @ResponseBody
     public Object openIdToken(String code){
         return new CommonResult2(wxService.getOpenIdToken(code),new Meta("获取成功",200));
+    }
+
+    @GetMapping("log")
+    @ResponseBody
+    @SysLogAnnotation
+    public Object testLog(String p){
+        System.out.println("Niaho");
+        return new SysLog();
     }
 
     /**

@@ -1,8 +1,8 @@
 package com.lhf.dajiuye.swipper.service.mapper;
 
-import com.lhf.dajiuye.api.bean.City;
-import com.lhf.dajiuye.api.bean.District;
-import com.lhf.dajiuye.api.bean.Province;
+import com.lhf.dajiuye.api.bean.swipper.City;
+import com.lhf.dajiuye.api.bean.swipper.District;
+import com.lhf.dajiuye.api.bean.swipper.Province;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

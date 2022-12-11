@@ -1,8 +1,13 @@
+host1: 192.168.42.100
 # dubbo配置
 dubbo:
   registry:
-    address: zookeeper://192.168.42.101:2181
+    address: zookeeper://${host1}:2181
 spring:
+  # swagger版本兼容
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   # MySQL配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -11,9 +16,10 @@ spring:
     username: root
     password: weiwenping
 
+
   # rabbitmq 配置
   rabbitmq:
-    host: 192.168.42.100
+    host: ${host1}
     virtual-host: /
     port: 5672
     # 生产端确认回调
@@ -26,6 +32,11 @@ spring:
     listener:
       simple:
         acknowledge-mode: manual # 开启手动确认模式
+  kafka:
+    bootstrap-servers: ${host1}:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 # aliyun oss
 # 地域节点

@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.user.service.aspect;
 
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 import com.lhf.dajiuye.api.service.user.MyUserService;
 import com.lhf.dajiuye.user.service.utils.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;

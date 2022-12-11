@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.api.service.acl;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 
 /**
  * <p>

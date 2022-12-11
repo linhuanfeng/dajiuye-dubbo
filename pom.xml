@@ -11,11 +11,18 @@
     <description>大就业-聚合服务</description>
     <packaging>pom</packaging>
     <modules>
-        <module>dajiuye-acl</module>
-        <module>health-common</module>
-        <module>dajiuye-own</module>
-        <module>dajiuye-seckill</module>
+        <module>dajiuye-acl-service</module>
+        <module>dajiuye-api</module>
         <module>dajiuye-editor</module>
+        <module>dajiuye-job-service</module>
+        <module>dajiuye-message-service</module>
+        <module>dajiuye-order-service</module>
+        <module>dajiuye-token-service</module>
+        <module>dajiuye-seckill-service</module>
+        <module>dajiuye-swipper-service</module>
+        <module>dajiuye-user-service</module>
+        <module>dajiuye-web-app</module>
+        <module>health-common</module>
     </modules>
 
     <properties>
@@ -29,17 +36,17 @@
         <commons.io.version>2.5</commons.io.version>
         <commons.configuration.version>1.10</commons.configuration.version>
         <httpcore.version>4.4.13</httpcore.version>
-        <fastjson.version>1.2.74</fastjson.version>
+        <fastjson.version>1.2.75</fastjson.version>
         <velocity.version>1.7</velocity.version>
         <pagehelper.spring.boot.version>1.2.5</pagehelper.spring.boot.version>
         <mysql.version>5.1.6</mysql.version>
         <servlet.version>4.0.1</servlet.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <hibernate.validator.version>6.0.12.Final</hibernate.validator.version>
-        <spring.boot.version>2.3.0.release</spring.boot.version>
+        <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
+<!--        <spring.boot.version>2.3.0.release</spring.boot.version>-->
         <swagger.version>2.7.0</swagger.version>
         <jwt.version>0.7.0</jwt.version>
-        <fastjson.version>1.2.28</fastjson.version>
         <redisson.version>3.13.6</redisson.version>
     </properties>
 
@@ -50,22 +57,23 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>2.2.2.RELEASE</version>
+<!--                <version>${spring.boot.version}</version>-->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <!--swagger-->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.springfox</groupId>-->
+<!--                <artifactId>springfox-swagger2</artifactId>-->
+<!--                <version>${swagger.version}</version>-->
+<!--            </dependency>-->
             <!--swagger ui-->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.springfox</groupId>-->
+<!--                <artifactId>springfox-swagger-ui</artifactId>-->
+<!--                <version>${swagger.version}</version>-->
+<!--            </dependency>-->
             <!-- JWT -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>

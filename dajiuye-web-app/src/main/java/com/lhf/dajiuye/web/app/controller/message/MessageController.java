@@ -1,6 +1,9 @@
 package com.lhf.dajiuye.web.app.controller.message;
 
 import com.lhf.dajiuye.api.bean.*;
+import com.lhf.dajiuye.api.bean.chat.Message;
+import com.lhf.dajiuye.api.bean.chat.MessageDetail;
+import com.lhf.dajiuye.api.bean.user.User;
 import com.lhf.dajiuye.api.service.message.MessageService;
 import com.lhf.dajiuye.api.service.user.MyUserService;
 import com.lhf.dajiuye.web.app.utils.MessageUtil;

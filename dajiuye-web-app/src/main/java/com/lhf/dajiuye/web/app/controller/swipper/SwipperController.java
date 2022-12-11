@@ -1,12 +1,13 @@
 package com.lhf.dajiuye.web.app.controller.swipper;
 
-import com.lhf.dajiuye.api.bean.CatItems;
+import com.lhf.dajiuye.api.bean.swipper.CatItems;
 import com.lhf.dajiuye.api.bean.CommonResult;
 import com.lhf.dajiuye.api.bean.Meta;
-import com.lhf.dajiuye.api.bean.SwiperData;
+import com.lhf.dajiuye.api.bean.swipper.SwiperData;
 import com.lhf.dajiuye.api.service.swipper.SwipperDataService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,8 @@ import java.util.List;
 @RequestMapping("/swipper/swipper")
 public class SwipperController {
 
-    @DubboReference(interfaceClass = SwipperDataService.class,version = "1.0.0",check = false)
+    @DubboReference(interfaceClass = SwipperDataService.class,version = "1.0.0",
+            check = false,loadbalance = "myrandom")
     private SwipperDataService swipperDataService;
 
     /**
@@ -25,11 +27,10 @@ public class SwipperController {
      * @return
      * @throws IOException
      */
-    @RequestMapping("/swiperdata")
+    @GetMapping("/swiperdata")
     @PreAuthorize("hasAuthority('swipper:select')")
-    public Object swiperdata() throws IOException {
+    public Object swiperdata() {
         List<SwiperData> swiperDataList = swipperDataService.getswiperDataList();
-        // System.out.println(swiperDataList);
         return new CommonResult<SwiperData>(swiperDataList,new Meta("获取成功",200));
     }
 
@@ -38,11 +39,10 @@ public class SwipperController {
      * @return
      * @throws IOException
      */
-    @RequestMapping("/catitems")
+    @GetMapping("/catitems")
     @PreAuthorize("hasAuthority('catitems:select')")
     public Object catitems()  {
         List<CatItems> catItemsList = swipperDataService.getcatItemsList();
-        System.out.println(catItemsList);
         return new CommonResult<CatItems>(catItemsList,new Meta("获取成功",200));
     }
 }

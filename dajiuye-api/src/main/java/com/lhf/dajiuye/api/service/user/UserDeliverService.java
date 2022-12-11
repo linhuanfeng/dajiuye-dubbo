@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.api.service.user;
 
 
-import com.lhf.dajiuye.api.bean.Userdeliver;
+import com.lhf.dajiuye.api.bean.user.Userdeliver;
 
 public interface UserDeliverService {
     /**

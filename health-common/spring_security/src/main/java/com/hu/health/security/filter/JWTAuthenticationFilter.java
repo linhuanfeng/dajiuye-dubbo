@@ -26,10 +26,10 @@ import java.util.stream.Collectors;
 @Slf4j
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
-    @DubboReference(interfaceClass = PermissionService.class,version = "1.0.0")
+    @DubboReference(interfaceClass = PermissionService.class,version = "1.0.0",check = false)
     private PermissionService permissionService;
 
-    @DubboReference(interfaceClass = WxService.class,version = "1.0.0")
+    @DubboReference(interfaceClass = WxService.class,version = "1.0.0",check = false)
     private WxService wxService;
 
     @Override

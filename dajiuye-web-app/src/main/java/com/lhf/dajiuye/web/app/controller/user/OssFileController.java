@@ -5,6 +5,7 @@ import com.lhf.dajiuye.api.service.user.MyUserService;
 import com.lhf.dajiuye.api.service.user.OssFileService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,7 +22,7 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping("/user/oss")
 @RestController
 public class OssFileController {
-    @DubboReference(interfaceClass = OssFileService.class,version = "1.0.0",check = false)
+    @Autowired
     private OssFileService fileUploadService;
 
     @DubboReference(interfaceClass = MyUserService.class,version = "1.0.0",check = false)
@@ -36,8 +37,8 @@ public class OssFileController {
      */
     @PostMapping("all")
     public String uploadAll(@RequestParam("all") MultipartFile file,
-                            @RequestParam("openId") String openId,
-                            @RequestParam("fileName") String fileName,
+                            @RequestParam(value = "openId",required = false,defaultValue = "openId") String openId,
+                            @RequestParam(value = "fileName",required = false,defaultValue = "fileName") String fileName,
                             HttpServletRequest req, HttpServletResponse resp) {
         log.info("file:"+file+" openId:"+openId+" fileName"+fileName);
         JSONObject jsonObject = new JSONObject();
@@ -49,11 +50,8 @@ public class OssFileController {
             }
             jsonObject.put("success", "文件上传成功！");
             jsonObject.put("returnFileUrl", returnFileUrl);
-
-//            System.out.println(EncryptUtil.decryptUtil(openId));
-//            int i = userService.updateUserResumeByOpenId(returnFileUrl, EncryptUtil.decryptUtil(openId));
-//            log.info("更新简历后i={}",i);
-
+            // 更新用户简历
+            userService.updateUserResumeByOpenId(returnFileUrl, openId);
             return returnFileUrl;
         } else {
             jsonObject.put("error", "文件上传失败！");

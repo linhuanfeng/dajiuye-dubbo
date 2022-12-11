@@ -1,8 +1,8 @@
 package com.lhf.dajiuye.swipper.service.service.impl;
 
-import com.lhf.dajiuye.api.bean.City;
-import com.lhf.dajiuye.api.bean.District;
-import com.lhf.dajiuye.api.bean.Province;
+import com.lhf.dajiuye.api.bean.swipper.City;
+import com.lhf.dajiuye.api.bean.swipper.District;
+import com.lhf.dajiuye.api.bean.swipper.Province;
 import com.lhf.dajiuye.api.service.swipper.AreaService;
 import com.lhf.dajiuye.swipper.service.mapper.AreaDataMapper;
 import org.apache.dubbo.config.annotation.DubboService;

@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.swipper.service.service.impl;
 
-import com.lhf.dajiuye.api.bean.CatItems;
-import com.lhf.dajiuye.api.bean.SwiperData;
+import com.lhf.dajiuye.api.bean.swipper.CatItems;
+import com.lhf.dajiuye.api.bean.swipper.SwiperData;
 import com.lhf.dajiuye.api.service.swipper.SwipperDataService;
 import com.lhf.dajiuye.swipper.service.mapper.SwiperDataMapper;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -24,6 +24,7 @@ public class SwipperDataServiceImpl implements SwipperDataService {
      */
     @Override
     public List<SwiperData> getswiperDataList() {
+        System.out.println("service22222222");
         List<SwiperData> swiperDataList = mapper.getSwiperDataList();
         return swiperDataList;
     }

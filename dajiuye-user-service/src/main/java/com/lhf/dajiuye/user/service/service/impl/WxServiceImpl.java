@@ -1,8 +1,8 @@
 package com.lhf.dajiuye.user.service.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.lhf.dajiuye.api.bean.LoginInfo;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.LoginInfo;
+import com.lhf.dajiuye.api.bean.user.User;
 import com.lhf.dajiuye.api.dto.OpenIdTokenDto;
 import com.lhf.dajiuye.api.service.user.MyUserService;
 import com.lhf.dajiuye.api.service.user.RestService;
@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 import sun.misc.BASE64Decoder;
 

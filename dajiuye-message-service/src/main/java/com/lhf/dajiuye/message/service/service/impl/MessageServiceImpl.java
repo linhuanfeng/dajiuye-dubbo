@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.message.service.service.impl;
 
-import com.lhf.dajiuye.api.bean.Message;
-import com.lhf.dajiuye.api.bean.MessageDetail;
+import com.lhf.dajiuye.api.bean.chat.Message;
+import com.lhf.dajiuye.api.bean.chat.MessageDetail;
 import com.lhf.dajiuye.api.service.message.MessageService;
 import com.lhf.dajiuye.message.service.mapper.MessageMapper;
 import org.apache.dubbo.config.annotation.DubboService;

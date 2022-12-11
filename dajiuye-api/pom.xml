@@ -18,12 +18,6 @@
             <groupId>com.lhf.dajiuye</groupId>
             <artifactId>health-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <!--            <exclusions>-->
-            <!--                <exclusion>-->
-            <!--                    <groupId>com.baomidou</groupId>-->
-            <!--                    <artifactId>mybatis-plus-boot-starter</artifactId>-->
-            <!--                </exclusion>-->
-            <!--            </exclusions>-->
         </dependency>
         <!--pagehelper  Mybatis 分页插件 -->
         <dependency>
@@ -31,8 +25,12 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.4.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.lhf.dajiuye</groupId>
+            <artifactId>dajiuye-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>

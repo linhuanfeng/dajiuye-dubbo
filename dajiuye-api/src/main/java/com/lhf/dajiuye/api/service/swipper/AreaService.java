@@ -2,9 +2,9 @@ package com.lhf.dajiuye.api.service.swipper;
 
 
 
-import com.lhf.dajiuye.api.bean.City;
-import com.lhf.dajiuye.api.bean.District;
-import com.lhf.dajiuye.api.bean.Province;
+import com.lhf.dajiuye.api.bean.swipper.City;
+import com.lhf.dajiuye.api.bean.swipper.District;
+import com.lhf.dajiuye.api.bean.swipper.Province;
 
 import java.util.List;
 

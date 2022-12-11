@@ -2,9 +2,9 @@ package com.lhf.dajiuye.api.service.job;
 
 
 
-import com.lhf.dajiuye.api.bean.LCategory;
-import com.lhf.dajiuye.api.bean.MCategory;
-import com.lhf.dajiuye.api.bean.SCategory;
+import com.lhf.dajiuye.api.bean.job.LCategory;
+import com.lhf.dajiuye.api.bean.job.MCategory;
+import com.lhf.dajiuye.api.bean.job.SCategory;
 
 import java.util.List;
 

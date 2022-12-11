@@ -4,7 +4,7 @@ package com.lhf.dajiuye.api.service.job;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
-import com.lhf.dajiuye.api.bean.Job;
+import com.lhf.dajiuye.api.bean.job.Job;
 import com.lhf.dajiuye.api.bean.Params;
 
 import java.util.List;
@@ -12,6 +12,8 @@ import java.util.List;
 public interface JobDataService extends IService<Job> {
 
 //    CheckTokenFeignService getfeign();
+//    void addJobScore(String message);
+    void jobDelivery(String message);
 
     /**
      * 新增职位
@@ -21,12 +23,12 @@ public interface JobDataService extends IService<Job> {
 
     /**
      * 获取就业列表信息
-     * @param jobId
+     * @param params
      * @return
      */
-    PageInfo<Job> getJobData(String jobId, Params params);
+    PageInfo<Job> getJobs(Params params);
 
-    PageInfo<Job> getJobData2(Params params);
+    PageInfo<Job> getJobsByCid(Params params);
 
     /**
      * 获取职位信息2
@@ -43,6 +45,11 @@ public interface JobDataService extends IService<Job> {
     Job getJobById(String jobId);
 
     /**
+     * 增加职位权值
+     * @param jobId
+     */
+    void addJobScore(String jobId);
+    /**
      * 查询投递职位反馈
      * @param pageNum
      * @param pageSize
@@ -57,7 +64,7 @@ public interface JobDataService extends IService<Job> {
      * @param job
      * @return
      */
-    List<Job> jobsCustom(Job job);
+    List<Job> getJobsCustom(Job job);
 
     /**
      * 搜索职位
@@ -65,4 +72,11 @@ public interface JobDataService extends IService<Job> {
      * @return
      */
     PageInfo<Job> query(Params params);
+
+    /**
+     * 将mysql数据导入es中
+     */
+    void jobToElasticSearch();
+
+    PageInfo<Job> queryByEs(Params params);
 }

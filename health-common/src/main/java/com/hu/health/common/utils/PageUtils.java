@@ -8,9 +8,8 @@
 
 package com.hu.health.common.utils;
 
-//import com.baomidou.mybatisplus.core.metadata.IPage;
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,6 +19,7 @@ import java.util.List;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Slf4j
 public class PageUtils implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/**
@@ -42,7 +42,12 @@ public class PageUtils implements Serializable {
 	 * 列表数据
 	 */
 	private List<?> list;
-	
+
+	/**
+	 * dubbo 使用Hessian反序列化的时候可能要使用到无参构造，不然报空指针异常
+	 */
+	public PageUtils() {}
+
 	/**
 	 * 分页
 	 * @param list        列表数据
@@ -62,11 +67,13 @@ public class PageUtils implements Serializable {
 	 * 分页
 	 */
 	public PageUtils(IPage<?> page) {
-		this.list = page.getRecords();
-		this.totalCount = (int)page.getTotal();
-		this.pageSize = (int)page.getSize();
-		this.currPage = (int)page.getCurrent();
-		this.totalPage = (int)page.getPages();
+		if(page!=null){
+			this.list = page.getRecords();
+			this.totalCount = (int)page.getTotal();
+			this.pageSize = (int)page.getSize();
+			this.currPage = (int)page.getCurrent();
+			this.totalPage = (int)page.getPages();
+		}
 	}
 
 	public int getTotalCount() {

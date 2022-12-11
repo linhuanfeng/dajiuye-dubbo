@@ -16,11 +16,13 @@ import java.io.Serializable;
  */
 public class Params implements Serializable {
     private Integer pageSize = 10;
-    private Integer pageNo = 0;
+    private Integer pageNum = 1;
     // 查询的内容
-    String query;
+    String query = "";
     // 分类id
-    String cid;
+    String cid = "";
     // 职位类型，1实习，2校招，3社招
-    public Integer jobType;
+    public Integer jobType = -1;
+    private String jobAge = "";
+    private String jobSalary = "";
 }

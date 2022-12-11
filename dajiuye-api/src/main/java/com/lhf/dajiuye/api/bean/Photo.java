@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
+@Deprecated
 public class Photo implements Serializable {
     String url;
     String name;

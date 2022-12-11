@@ -1,7 +1,7 @@
 package com.lhf.dajiuye.acl.service.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 
 /**
  * <p>

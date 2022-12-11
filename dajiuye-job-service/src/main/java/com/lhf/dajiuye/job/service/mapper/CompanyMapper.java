@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.job.service.mapper;
 
-import com.lhf.dajiuye.api.bean.Company;
+import com.lhf.dajiuye.api.bean.job.Company;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

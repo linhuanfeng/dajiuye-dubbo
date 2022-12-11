@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace和mapper里面接口方法全限定名对应好就可以自动联系-->
 <mapper namespace="com.lhf.dajiuye.job.service.mapper.JobDataMapper">
-    <resultMap id="comMap" type="com.lhf.dajiuye.api.bean.Company">
+    <resultMap id="comMap" type="com.lhf.dajiuye.api.bean.job.Company">
         <id column="comId" property="comId"></id>
         <result column="comFullName" property="comFullName"/>
         <result column="comAuthCapital" property="comAuthCapital"/>
@@ -20,7 +20,7 @@
         <result column="comWelfare" property="comWelfare"/>
         <result column="comLinks" property="comLinks"/>
     </resultMap>
-    <resultMap id="jobMap" type="com.lhf.dajiuye.api.bean.Job">
+    <resultMap id="jobMap" type="com.lhf.dajiuye.api.bean.job.Job">
         <id column="jobId" property="jobId"></id>
         <result column="jobSalary" property="jobSalary"/>
         <result column="jobName" property="jobName"/>
@@ -43,7 +43,7 @@
         <result column="jobDeadLine" property="jobDeadLine"/>
         <result column="jobWelfare" property="jobWelfare"/>
         <result column="jobType" property="jobType"/>
-        <association column="company" property="company" javaType="com.lhf.dajiuye.api.bean.Company" resultMap="comMap">
+        <association column="company" property="company" javaType="com.lhf.dajiuye.api.bean.job.Company" resultMap="comMap">
         </association>
     </resultMap>
 </mapper>

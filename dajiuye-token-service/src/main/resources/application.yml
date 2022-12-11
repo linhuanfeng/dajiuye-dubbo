@@ -1,0 +1,16 @@
+host1: 192.168.42.100
+# dubbo配置
+dubbo:
+  protocol:
+    name: dubbo # 协议名称
+    port: 7096 # dubbo服务暴露的端口
+  application:
+    name: ${spring.application.name}
+  registry:
+    address: zookeeper://${host1}:2181
+spring:
+  application:
+    name: dajiuye-token-service
+server:
+  port: 8096
+

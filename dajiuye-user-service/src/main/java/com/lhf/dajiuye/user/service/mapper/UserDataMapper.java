@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.user.service.mapper;
 
-import com.lhf.dajiuye.api.bean.User;
+import com.lhf.dajiuye.api.bean.user.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -40,5 +40,5 @@ public interface UserDataMapper {
     int updateUser(User user);
 
     @Update("update user set resume=#{resumeUrl} where open_id=#{openId}")
-    int updateUserResume(String resumeUrl, String openId);
+    int updateUserResume(@Param("resumeUrl") String resumeUrl,@Param("openId") String openId);
 }
