@@ -1,0 +1,65 @@
+# dubbo服务配置
+dubbo:
+  registry:
+    address: zookeeper://${host2}:2181
+    use-as-config-center: true # 如果没有配置中心和元数据中心，默认使用注册中心作为配置中心和元数据中心
+    use-as-metadata-center: true # 元数据中心是注册中心的扩展：接口与应用的映射；承载服务元数据和接口配置信息
+  protocol:
+    name: dubbo
+    port: 7072
+  application:
+    name: dajiuye-swipper-service # dubbo服务应用名称，默认是application.name
+spring:
+  # MySQL配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dajiuye?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: weiwenping
+
+  # rabbitmq配置
+  rabbitmq:
+    host: ${host2}
+    virtual-host: /
+    port: 5672
+    # 生产端确认回调
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
+    username: itcast
+    password: 123
+    listener:
+      simple:
+        acknowledge-mode: manual # 开启手动确认模式
+
+# aliyun oss配置
+# 地域节点
+aliyun.endPoint: oss-cn-shenzhen.aliyuncs.com
+# Bucket 域名
+aliyun.urlPrefix: https://dajiuye2.oss-cn-shenzhen.aliyuncs.com/
+# accessKey Id
+aliyun.accessKeyId: LTAI5tP7Kk3xA1M4oJawzdH7
+# accessKey Secret
+aliyun.accessKeySecret: rTlHPzyvVTfretbT4jPKRNaLgauMzu
+# 你的Bucket名称
+aliyun.bucketName: dajiuye2
+# 目标文件夹
+aliyun.fileHost: test
+
+# 微信小程序的appid和secret
+wx:
+  url: api.weixin.qq.com/sns/jscode2session
+  appid: wxffd8f31f5bb7f05f
+  secret: baa7959cdd43af09c9c5bcb0d3e426ea
+  grant_type: authorization_code
+
+# 发送微信http请求的
+httppool:
+  max_total: 200
+  max_per_route: 100
+  connect_timeout: 5000
+  connection_request_timeout: 1000
+  socket_timeout: 65000
+  validate_after_inactivity: 2000

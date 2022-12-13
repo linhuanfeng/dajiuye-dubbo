@@ -1,0 +1,7 @@
+host1: 127.0.0.1
+host2: 192.168.42.102
+spring:
+  application:
+    name: dajiuye-message-service
+  profiles:
+    active: dev

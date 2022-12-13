@@ -1,0 +1,7 @@
+host1: 127.0.0.1
+host2: 192.168.42.102
+spring:
+  profiles:
+    active: dev
+  application:
+    name: dajiuye-acl-service
