@@ -3,7 +3,7 @@
 
 ## 运行截图
 
-![image-20220426181445212](README.assets/image-20220426181445212.png)
+![image-20221213223112786](README.assets/image-20221213223112786.png)
 
 ## 技术选型
 
@@ -25,16 +25,20 @@ Dubbo+SpringBoot+Zookeeper++RabbitMQ+WebSockket+Redis+SpringSecurity+JWT
 
 ## 部署运行
 ### 前端
-weChat_daJiuYe2为小程序代码，其他为后端代码
+
+dajiuye-mp
+
+使用微信开发者工具导入dajiuye-mp即可运行
 
 ### 后端
+
+dajiuye-backend
+
 1、导入数据库，并更改数据库地址
 
-2、更改zookeeper地址，rabbitmq地址，redis地址
+2、更改zookeeper地址，rabbitmq地址，redis地址，kafka地址
 
-3、后端运行
-
-4、打开微信开发者工具运行
+3、即可启动
 
 ## 碎碎念
 
@@ -42,6 +46,6 @@ weChat_daJiuYe2为小程序代码，其他为后端代码
 
 如果有心，不妨请博主喝杯茶::laughing::
 
-![image-20221213214256879](dajiuye-backend/README.assets/image-20221213214256879.png)
+![image-20221213223101979](README.assets/image-20221213223101979.png)
 
 最后的最后，如果你有任何不懂疑问，欢迎添加**扣扣**咨询群【417094004】，开源不易，一定要给我==Star==哦！！也可加个人微信咨询【moon5672369】
