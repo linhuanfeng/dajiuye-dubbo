@@ -11,18 +11,15 @@
     <description>大就业-聚合服务</description>
     <packaging>pom</packaging>
     <modules>
-        <module>dajiuye-acl-service</module>
         <module>dajiuye-api</module>
-        <module>dajiuye-editor</module>
         <module>dajiuye-job-service</module>
         <module>dajiuye-message-service</module>
-        <module>dajiuye-order-service</module>
         <module>dajiuye-token-service</module>
-        <module>dajiuye-seckill-service</module>
         <module>dajiuye-swipper-service</module>
         <module>dajiuye-user-service</module>
         <module>dajiuye-web-app</module>
-        <module>health-common</module>
+        <module>dajiuye-common</module>
+        <module>dajiuye-acl-service</module>
     </modules>
 
     <properties>
@@ -43,7 +40,7 @@
         <servlet.version>4.0.1</servlet.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <hibernate.validator.version>6.0.12.Final</hibernate.validator.version>
-        <spring.boot.version>2.3.1.RELEASE</spring.boot.version>
+        <spring.boot.version>2.6.3</spring.boot.version>
 <!--        <spring.boot.version>2.3.0.release</spring.boot.version>-->
         <swagger.version>2.7.0</swagger.version>
         <jwt.version>0.7.0</jwt.version>
@@ -57,8 +54,8 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.2.RELEASE</version>
-<!--                <version>${spring.boot.version}</version>-->
+<!--                <version>2.2.2.RELEASE</version>-->
+                <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

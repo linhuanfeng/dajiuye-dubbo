@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.lhf.dajiuye</groupId>
-            <artifactId>health-common</artifactId>
+            <artifactId>dajiuye-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!--pagehelper  Mybatis 分页插件 -->

@@ -3,9 +3,11 @@ package com.lhf.dajiuye.web.app.controller.user;
 import com.alibaba.fastjson.JSONObject;
 import com.lhf.dajiuye.api.service.user.MyUserService;
 import com.lhf.dajiuye.api.service.user.OssFileService;
+import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

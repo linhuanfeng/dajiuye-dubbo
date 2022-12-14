@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
-@Configuration
+//@Configuration
 @Slf4j
 public class RabbitConfig {
     @Bean

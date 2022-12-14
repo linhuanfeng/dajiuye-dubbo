@@ -7,11 +7,14 @@ import com.lhf.dajiuye.api.constant.JobMqConstants;
 import com.lhf.dajiuye.api.service.job.JobDataService;
 import com.lhf.dajiuye.api.service.message.KafkaService;
 import com.lhf.dajiuye.api.service.user.ApiIdempotent;
+import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import com.lhf.dajiuye.web.app.log.SysLogAnnotation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/job/job")
 @Slf4j
+@CacheConfig(cacheNames = RedisCacheName.PREFIX +"job:job:")
 public class JobController {
 
     @DubboReference(interfaceClass = JobDataService.class,version = "1.0.0",check = false)
@@ -51,6 +55,7 @@ public class JobController {
      */
     @GetMapping("/jobs")
     @PreAuthorize("hasAuthority('job:list')")
+    @Cacheable
     public Object getJobs(Params params){
         PageInfo<Job> jobDataList = jobDataService.getJobs(params);
         return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
@@ -64,6 +69,7 @@ public class JobController {
     @GetMapping("/jobsByEs")
     @PreAuthorize("hasAuthority('job:list')")
     @SysLogAnnotation
+    @Cacheable
     public Object getJobsByEs(Params params){
         PageInfo<Job> jobDataList = jobDataService.queryByEs(params);
         return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
@@ -121,6 +127,7 @@ public class JobController {
      */
     @GetMapping("job")
     @SysLogAnnotation
+    @Cacheable
     public Object job(@RequestParam(value = "jobId") String jobId){
         Job job = jobDataService.getJobById(jobId);
         return new CommonResult2<>(job, new Meta("获取成功", 200));
@@ -133,6 +140,7 @@ public class JobController {
      */
     @GetMapping("/jobsByComId")
     @SysLogAnnotation
+    @Cacheable
     public Object listByCom(@RequestParam(value = "comId") String comId){
         PageInfo<Job> pageInfo = jobDataService.getJobsByComId(new Params(), comId);
         return new CommonResult2<>(pageInfo, new Meta("获取成功", 200));
@@ -149,6 +157,7 @@ public class JobController {
     @PostMapping("/jobsByCid")
     @PreAuthorize("hasAuthority('job:list')")
     @SysLogAnnotation
+    @Cacheable
     public Object jobsByCid(@RequestBody Params params) {
         PageInfo<Job> jobDataList = jobDataService.getJobsByCid(params);
         return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
@@ -165,6 +174,7 @@ public class JobController {
      */
     @GetMapping("/jobsFeedback")
     @SysLogAnnotation
+    @Cacheable
     public Object jobsFeedback(@RequestParam("pagenum") String pageNum,
                                @RequestParam("pagesize") String pageSize,
                                @RequestParam("userid") String userId,

@@ -5,8 +5,10 @@ import com.hu.health.common.utils.JsonUtil;
 import com.lhf.dajiuye.api.bean.user.Userdeliver;
 import com.lhf.dajiuye.api.service.message.KafkaService;
 import com.lhf.dajiuye.api.service.user.UserDeliverService;
+import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 @RestController
 @RequestMapping("/user/deliver")
+@CacheConfig(cacheNames = RedisCacheName.PREFIX +"/user/deliver")
 public class UserdeliverController {
 
     @Autowired

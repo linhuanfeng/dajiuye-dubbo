@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.lhf.dajiuye</groupId>
-    <artifactId>health-acl-service</artifactId>
+    <artifactId>dajiuye-acl-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>dajiuye-acl-service</name>
     <description>认证模块</description>

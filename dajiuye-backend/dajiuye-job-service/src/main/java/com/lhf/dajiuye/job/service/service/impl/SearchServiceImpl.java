@@ -51,7 +51,6 @@ public class SearchServiceImpl implements SearchService {
         for (Job entity : entities) {
             bulkRequest.add(new IndexRequest(QuestionConstants.INDEX_JOB)
                     .id(entity.getJobId())
-                    .type("_doc") // es6得指明type
                     .source(JSON.toJSONString(entity), XContentType.JSON));
         }
         BulkResponse response = client.bulk(bulkRequest, RequestOptions.DEFAULT);
@@ -68,7 +67,8 @@ public class SearchServiceImpl implements SearchService {
             pageInfo.setPages((int) (pageInfo.getTotal()%param.getPageSize()==0?
                                 pageInfo.getTotal()/param.getPageSize():
                                 pageInfo.getTotal()/param.getPageSize()+1));
-            return buildSearchResult(response);
+            pageInfo.setPageNum(param.getPageNum());
+            return pageInfo;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -93,7 +93,6 @@ public class SearchServiceImpl implements SearchService {
         }).collect(Collectors.toList());
 
         PageInfo<Job> pageInfo = new PageInfo<>(collect);
-        pageInfo.setPages((int) hits.getTotalHits());
         return pageInfo;
     }
 

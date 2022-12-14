@@ -1,4 +1,4 @@
-package com.lhf.dajiuye.user.service.config;
+package com.lhf.dajiuye.swipper.service.config;
 
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.cache.annotation.CachingConfigurerSupport;

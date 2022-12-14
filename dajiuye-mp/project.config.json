@@ -43,7 +43,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.18.0",
   "appid": "wxffd8f31f5bb7f05f",
-  "projectname": "wechat_DaJiuYe2",
+  "projectname": "dajiuye-mp",
   "debugOptions": {
     "hidedInDevtools": []
   },

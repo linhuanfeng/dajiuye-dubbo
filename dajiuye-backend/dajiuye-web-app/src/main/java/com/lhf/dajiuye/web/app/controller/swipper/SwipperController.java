@@ -5,7 +5,10 @@ import com.lhf.dajiuye.api.bean.CommonResult;
 import com.lhf.dajiuye.api.bean.Meta;
 import com.lhf.dajiuye.api.bean.swipper.SwiperData;
 import com.lhf.dajiuye.api.service.swipper.SwipperDataService;
+import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/swipper/swipper")
+@CacheConfig(cacheNames = RedisCacheName.PREFIX +"/swipper/swipper")
 public class SwipperController {
 
     @DubboReference(interfaceClass = SwipperDataService.class,version = "1.0.0",
@@ -29,6 +33,7 @@ public class SwipperController {
      */
     @GetMapping("/swiperdata")
     @PreAuthorize("hasAuthority('swipper:select')")
+    @Cacheable
     public Object swiperdata() {
         List<SwiperData> swiperDataList = swipperDataService.getswiperDataList();
         return new CommonResult<SwiperData>(swiperDataList,new Meta("获取成功",200));
@@ -41,6 +46,7 @@ public class SwipperController {
      */
     @GetMapping("/catitems")
     @PreAuthorize("hasAuthority('catitems:select')")
+    @Cacheable
     public Object catitems()  {
         List<CatItems> catItemsList = swipperDataService.getcatItemsList();
         return new CommonResult<CatItems>(catItemsList,new Meta("获取成功",200));

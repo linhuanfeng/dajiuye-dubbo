@@ -8,8 +8,12 @@ import com.lhf.dajiuye.api.bean.swipper.CommunityBank;
 import com.lhf.dajiuye.api.bean.swipper.InterviewBank;
 import com.lhf.dajiuye.api.service.swipper.CommunityBankService;
 import com.lhf.dajiuye.api.service.swipper.InterviewBankService;
+import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -20,6 +24,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/swipper/community")
 @Slf4j
+@CacheConfig(cacheNames = RedisCacheName.PREFIX +"/swipper/community")
 public class CommunityBankController {
 
     @DubboReference(interfaceClass = CommunityBankService.class,version = "1.0.0",check = false,retries = 0,timeout =10000 )
@@ -29,6 +34,7 @@ public class CommunityBankController {
      * 列表
      */
     @GetMapping("/list")
+    @Cacheable
     // @RequiresPermissions("community:area:list")
     public Object list(@RequestParam Map<String, Object> params){
         PageUtils page = communityBankService.queryPage(params);
@@ -43,6 +49,7 @@ public class CommunityBankController {
      * 信息
      */
     @RequestMapping("/info/{id}")
+    @Cacheable
     // @RequiresPermissions("community:area:info")
     public R info(@PathVariable("id") Long id){
         CommunityBank communityBank = communityBankService.getById(id);
@@ -65,6 +72,7 @@ public class CommunityBankController {
      * 修改
      */
     @RequestMapping("/update")
+    @CacheEvict(allEntries = true)
     // @RequiresPermissions("community:area:update")
     public R update(@RequestBody CommunityBank communityBank){
         communityBankService.updateById(communityBank);
@@ -76,6 +84,7 @@ public class CommunityBankController {
      * 删除
      */
     @RequestMapping("/delete")
+    @CacheEvict(allEntries = true)
     // @RequiresPermissions("community:area:delete")
     public R delete(@RequestBody Long[] ids){
         communityBankService.removeByIds(Arrays.asList(ids));

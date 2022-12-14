@@ -6,8 +6,12 @@ import com.lhf.dajiuye.api.bean.CommonResult;
 import com.lhf.dajiuye.api.bean.Meta;
 import com.lhf.dajiuye.api.bean.swipper.InterviewBank;
 import com.lhf.dajiuye.api.service.swipper.InterviewBankService;
+import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -18,6 +22,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/swipper/interview")
 @Slf4j
+@CacheConfig(cacheNames = RedisCacheName.PREFIX +"/swipper/interview")
 public class InterviewBankController {
 
     @DubboReference(interfaceClass = InterviewBankService.class,version = "1.0.0",check = false,retries = 0,timeout =10000 )
@@ -27,6 +32,7 @@ public class InterviewBankController {
      * 列表
      */
     @GetMapping("/list")
+    @Cacheable
     // @RequiresPermissions("community:area:list")
     public Object list(@RequestParam Map<String, Object> params){
         PageUtils page = interviewBankService.queryPage(params);
@@ -41,6 +47,7 @@ public class InterviewBankController {
      * 信息
      */
     @RequestMapping("/info/{id}")
+    @Cacheable
     // @RequiresPermissions("community:area:info")
     public R info(@PathVariable("id") Long id){
         InterviewBank interviewBank = interviewBankService.getById(id);
@@ -63,6 +70,7 @@ public class InterviewBankController {
      * 修改
      */
     @RequestMapping("/update")
+    @CacheEvict(allEntries = true)
     // @RequiresPermissions("community:area:update")
     public R update(@RequestBody InterviewBank interviewBank){
         interviewBankService.updateById(interviewBank);
@@ -74,6 +82,7 @@ public class InterviewBankController {
      * 删除
      */
     @RequestMapping("/delete")
+    @CacheEvict(allEntries = true)
     // @RequiresPermissions("community:area:delete")
     public R delete(@RequestBody Long[] ids){
         interviewBankService.removeByIds(Arrays.asList(ids));

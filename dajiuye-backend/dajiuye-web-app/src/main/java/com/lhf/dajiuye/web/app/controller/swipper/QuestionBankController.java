@@ -8,8 +8,11 @@ import com.lhf.dajiuye.api.bean.swipper.InterviewBank;
 import com.lhf.dajiuye.api.bean.swipper.QuestionBank;
 import com.lhf.dajiuye.api.service.swipper.InterviewBankService;
 import com.lhf.dajiuye.api.service.swipper.QuestionBankService;
+import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/swipper/question")
 @Slf4j
+@CacheConfig(cacheNames = RedisCacheName.PREFIX +"/swipper/question")
 public class QuestionBankController {
 
     @DubboReference(interfaceClass = QuestionBankService.class,version = "1.0.0",check = false,retries = 0,timeout =10000 )
@@ -30,6 +34,7 @@ public class QuestionBankController {
      */
     @GetMapping("/list")
     // @RequiresPermissions("community:area:list")
+    @Cacheable
     public Object list(@RequestParam Map<String, Object> params){
         PageUtils page = questionBankService.queryPage(params);
         List<?> list = page.getList();
@@ -44,6 +49,7 @@ public class QuestionBankController {
      */
     @GetMapping("/info/{id}")
     // @RequiresPermissions("community:area:info")
+    @Cacheable
     public R info(@PathVariable("id") Long id){
         QuestionBank questionBank = questionBankService.getById(id);
 
