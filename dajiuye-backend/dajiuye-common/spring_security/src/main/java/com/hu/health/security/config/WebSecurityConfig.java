@@ -40,19 +40,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 用自己的认证管理器（）认证账号和密码
 //    @Autowired
-    private TokenManager tokenManager;
+//    private TokenManager tokenManager;
 
 //    @Autowired
-    private RedisTemplate redisTemplate;
+//    private RedisTemplate redisTemplate;
 
 //    @Autowired
-    private DefaultPasswordEncoder defaultPasswordEncoder;
+//    private DefaultPasswordEncoder defaultPasswordEncoder;
+
+//    @Autowired
+//    private AuthenticationManager manager;
 
     /**
      * 重写loadUserByUsername，实现从数据库查数据，因此需要自定义实现这个
      */
 //    @Autowired
-    private UserDetailsService userDetailsService;
+//    private UserDetailsService userDetailsService;
 
 //    @Autowired
 //    public TokenWebSecurityConfig() {
@@ -66,18 +69,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //设置退出的地址和token，redis操作地址
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf()
-//                .disable()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/error/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and();
-//        http.addFilterAt(jwtOnePerRequestFilter(), UsernamePasswordAuthenticationFilter.class); // 替换
-//                .addFilterBefore(jwtOnePerRequestFilter(),JWTOnePerRequestFilter.class);
-
         http.exceptionHandling()
                 // 认证入口端点
 //                .authenticationEntryPoint(new UnauthEntryPoint())//没有权限访问
@@ -95,11 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/v2/**").permitAll()
                 .antMatchers("/api/**").permitAll()
-//                .antMatchers("/own/user/handleWXMsg").anonymous()
-//                .antMatchers("/acl/user/save").anonymous()
-//                .antMatchers("/own/home/swiperdata").anonymous()
                 .anyRequest().authenticated();
-//        http.addFilterAt(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 // 在UsernamePasswordAuthenticationFilter前面添加用于验证jwt，识别用户是否登录的过滤器,有登录直接认证
                 http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 //                .and().logout().logoutUrl("/logout")//退出路径
@@ -135,13 +122,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new JWTAuthenticationFilter();
     }
 
-    @Autowired
-    private AuthenticationManager manager;
-
-    @Bean
-    public WxAppletAuthenticationProcessingFilter wxAppletAuthenticationFilter(){
-        WxAppletAuthenticationProcessingFilter filter = new WxAppletAuthenticationProcessingFilter("/login");
-        filter.setAuthenticationManager(manager);
-        return filter;
-    }
+//    @Bean
+//    public WxAppletAuthenticationProcessingFilter wxAppletAuthenticationFilter(){
+//        WxAppletAuthenticationProcessingFilter filter = new WxAppletAuthenticationProcessingFilter("/login");
+//        filter.setAuthenticationManager(manager);
+//        return filter;
+//    }
 }

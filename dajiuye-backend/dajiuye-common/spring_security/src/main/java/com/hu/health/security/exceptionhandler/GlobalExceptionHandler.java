@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 //@ControllerAdvice
+@Deprecated
 @Slf4j
 public class GlobalExceptionHandler {
     /**

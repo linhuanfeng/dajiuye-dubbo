@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 /**
  * 真正认证干活的经理，需要设置到认证过滤器(WxAppletAuthenticationProcessingFilter)中
  */
-@Component
+//@Component
+@Deprecated
 public class WxAppletAuthenticationManager implements AuthenticationManager {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

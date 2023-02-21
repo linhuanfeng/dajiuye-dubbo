@@ -32,13 +32,21 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     @DubboReference(interfaceClass = WxService.class,version = "1.0.0",check = false)
     private WxService wxService;
 
+    /**
+     * 拦截header中token,检验登录状态
+     * @param request
+     * @param response
+     * @param filterChain
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = request.getHeader("token");
         if (StringUtils.hasText(token)) {
             // 校验token判断登录状态
             String openId = wxService.checkToken(token); // 校验token成功能直接获取openId
-            // token通过，直接授权
+            // token验证通过，直接授权
             List<String> permissions = permissionService.selectPermissionValueByUserId(openId);
             if (SecurityContextHolder.getContext().getAuthentication() == null) {
                 // 根据openId获取权限列表

@@ -29,6 +29,7 @@ import java.util.ArrayList;
  *      （2）可以自定义登录路径
  * 继承UsernamePasswordAuthFilter,重写successfulAuthentication认证成功逻辑，即保存token到redis
  */
+@Deprecated
 public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private TokenManager tokenManager;

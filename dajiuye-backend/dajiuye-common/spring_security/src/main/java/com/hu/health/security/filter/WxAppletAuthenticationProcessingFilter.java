@@ -14,6 +14,7 @@ import java.io.IOException;
  * 用户认证的filter，若认证成功，返回认证凭证Authentication
  * 但真正的认证逻辑是交给认证管理器authenticationManager，所以在创建本过滤器的时候需要设置认证管理器
  */
+@Deprecated
 public class WxAppletAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter{
     /**
      *

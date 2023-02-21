@@ -16,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -71,6 +74,7 @@ public class JobController {
     @SysLogAnnotation
     @Cacheable
     public Object getJobsByEs(Params params){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PageInfo<Job> jobDataList = jobDataService.queryByEs(params);
         return new CommonResult2<PageInfo>(jobDataList,new Meta("获取成功",200));
     }

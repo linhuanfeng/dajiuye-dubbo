@@ -22,6 +22,7 @@ import java.util.List;
  * 处理原生request请求头header的认证信息，并把结果放到security上下文中。
  *   即根据token判断用户是否登录（具体是从redis取权限列表进行授权）
  */
+@Deprecated
 public class MyBasicAuthenticationFilter extends BasicAuthenticationFilter {
 
     private TokenManager tokenManager;

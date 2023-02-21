@@ -19,7 +19,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/acl/permission")
-//@CrossOrigin
 public class PermissionController {
 
     @DubboReference(interfaceClass = PermissionService.class,version = "1.0.0",check = false)
