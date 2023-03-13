@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.hu.health.common.utils;
+package com.lhf.dajiuye.api.util;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
@@ -115,5 +115,5 @@ public class PageUtils implements Serializable {
 	public void setList(List<?> list) {
 		this.list = list;
 	}
-	
+
 }

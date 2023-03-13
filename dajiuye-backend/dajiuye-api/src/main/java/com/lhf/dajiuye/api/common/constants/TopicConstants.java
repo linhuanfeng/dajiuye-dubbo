@@ -1,4 +1,4 @@
-package com.hu.health.common.constants;
+package com.lhf.dajiuye.api.common.constants;
 
 public interface TopicConstants {
     String JOB_BROWSE="job-browse";

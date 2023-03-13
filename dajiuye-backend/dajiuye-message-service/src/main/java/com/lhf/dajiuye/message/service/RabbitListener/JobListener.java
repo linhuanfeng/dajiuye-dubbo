@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.message.service.RabbitListener;
 
-import com.hu.health.common.to.MessageDto;
+//import com.hu.health.common.to.MessageDto;
 import com.lhf.dajiuye.api.constant.JobMqConstants;
 import com.lhf.dajiuye.api.service.message.MessageService;
 import com.rabbitmq.client.Channel;

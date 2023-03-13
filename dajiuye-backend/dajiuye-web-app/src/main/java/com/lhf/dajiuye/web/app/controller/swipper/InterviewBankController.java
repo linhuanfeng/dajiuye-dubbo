@@ -1,11 +1,12 @@
 package com.lhf.dajiuye.web.app.controller.swipper;
 
-import com.hu.health.common.utils.PageUtils;
-import com.hu.health.common.utils.R;
+//import com.hu.health.common.utils.PageUtils;
+import com.lhf.dajiuye.api.common.utils.R;
 import com.lhf.dajiuye.api.bean.CommonResult;
 import com.lhf.dajiuye.api.bean.Meta;
 import com.lhf.dajiuye.api.bean.swipper.InterviewBank;
 import com.lhf.dajiuye.api.service.swipper.InterviewBankService;
+import com.lhf.dajiuye.api.util.PageUtils;
 import com.lhf.dajiuye.web.app.constants.RedisCacheName;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;

@@ -1,4 +1,4 @@
-package com.hu.health.common.utils;
+package com.lhf.dajiuye.api.common.utils;
 
 import com.alibaba.fastjson.JSON;
 

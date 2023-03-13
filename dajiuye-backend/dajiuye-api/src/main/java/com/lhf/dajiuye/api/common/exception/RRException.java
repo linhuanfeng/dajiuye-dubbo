@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.hu.health.common.exception;
+package com.lhf.dajiuye.api.common.exception;
 
 /**
  * 自定义异常
@@ -15,26 +15,26 @@ package com.hu.health.common.exception;
  */
 public class RRException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
-	
+
     private String msg;
     private int code = 500;
-    
+
     public RRException(String msg) {
 		super(msg);
 		this.msg = msg;
 	}
-	
+
 	public RRException(String msg, Throwable e) {
 		super(msg, e);
 		this.msg = msg;
 	}
-	
+
 	public RRException(String msg, int code) {
 		super(msg);
 		this.msg = msg;
 		this.code = code;
 	}
-	
+
 	public RRException(String msg, int code, Throwable e) {
 		super(msg, e);
 		this.msg = msg;
@@ -56,6 +56,6 @@ public class RRException extends RuntimeException {
 	public void setCode(int code) {
 		this.code = code;
 	}
-	
-	
+
+
 }

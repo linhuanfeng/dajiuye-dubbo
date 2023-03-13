@@ -23,6 +23,11 @@
             <artifactId>dajiuye-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.lhf.dajiuye</groupId>-->
+<!--            <artifactId>dajiuye-common</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
         <!--使用rabbitmq作为stomp的消息代理-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

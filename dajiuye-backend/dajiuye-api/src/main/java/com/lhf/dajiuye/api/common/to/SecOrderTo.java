@@ -1,4 +1,4 @@
-package com.hu.health.common.to;
+package com.lhf.dajiuye.api.common.to;
 
 import lombok.Data;
 import lombok.ToString;

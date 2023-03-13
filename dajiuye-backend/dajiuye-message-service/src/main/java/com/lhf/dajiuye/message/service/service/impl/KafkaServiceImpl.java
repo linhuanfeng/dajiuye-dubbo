@@ -1,7 +1,6 @@
 package com.lhf.dajiuye.message.service.service.impl;
 
-import com.hu.health.common.constants.TopicConstants;
-import com.hu.health.common.utils.JsonUtil;
+import com.lhf.dajiuye.api.common.constants.TopicConstants;
 import com.lhf.dajiuye.api.service.job.JobDataService;
 import com.lhf.dajiuye.api.service.message.KafkaService;
 import org.apache.dubbo.config.annotation.DubboReference;

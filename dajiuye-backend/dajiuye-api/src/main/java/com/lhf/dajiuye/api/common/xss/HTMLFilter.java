@@ -1,4 +1,4 @@
-package com.hu.health.common.xss;
+package com.lhf.dajiuye.api.common.xss;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

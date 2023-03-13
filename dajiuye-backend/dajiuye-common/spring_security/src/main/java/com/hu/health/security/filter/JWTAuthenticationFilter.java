@@ -1,7 +1,6 @@
 package com.hu.health.security.filter;
 
 import com.lhf.dajiuye.api.service.acl.PermissionService;
-import com.lhf.dajiuye.api.service.user.MyUserService;
 import com.lhf.dajiuye.api.service.user.WxService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;

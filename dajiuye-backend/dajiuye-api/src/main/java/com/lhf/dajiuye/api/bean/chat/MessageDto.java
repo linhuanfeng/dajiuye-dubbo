@@ -1,4 +1,4 @@
-package com.hu.health.common.to;
+package com.lhf.dajiuye.api.bean.chat;
 
 import lombok.Data;
 import lombok.ToString;

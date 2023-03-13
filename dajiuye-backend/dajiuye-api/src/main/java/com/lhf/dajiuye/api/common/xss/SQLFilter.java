@@ -6,9 +6,9 @@
  * 版权所有，侵权必究！
  */
 
-package com.hu.health.common.xss;
+package com.lhf.dajiuye.api.common.xss;
 
-import com.hu.health.common.exception.RRException;
+import com.lhf.dajiuye.api.common.exception.RRException;
 import org.apache.commons.lang.StringUtils;
 
 /**

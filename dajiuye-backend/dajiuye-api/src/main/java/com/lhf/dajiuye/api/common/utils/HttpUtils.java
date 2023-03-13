@@ -1,4 +1,4 @@
-package com.hu.health.common.utils;
+package com.lhf.dajiuye.api.common.utils;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;

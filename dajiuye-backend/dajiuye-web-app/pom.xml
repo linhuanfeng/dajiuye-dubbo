@@ -38,6 +38,11 @@
             <artifactId>dajiuye-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.lhf.dajiuye</groupId>-->
+<!--            <artifactId>dajiuye-common</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
         <!--websocket-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,7 +72,7 @@
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
         </dependency>
-        <!--kafka-->
+        <!--kafka日志处理方面-->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>

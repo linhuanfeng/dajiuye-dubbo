@@ -1,6 +1,7 @@
 package com.lhf.dajiuye.web.app.controller.message;
 
-import com.hu.health.common.to.MessageDto;
+//import com.hu.health.common.to.MessageDto;
+import com.lhf.dajiuye.api.bean.chat.MessageDto;
 import com.lhf.dajiuye.web.app.constants.WebSocketRabbitConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

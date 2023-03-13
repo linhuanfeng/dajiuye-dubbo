@@ -1,6 +1,6 @@
 package com.lhf.dajiuye.api.bean.chat;
 
-import com.hu.health.common.to.MessageDto;
+//import com.hu.health.common.to.MessageDto;
 import lombok.Data;
 
 import java.io.Serializable;

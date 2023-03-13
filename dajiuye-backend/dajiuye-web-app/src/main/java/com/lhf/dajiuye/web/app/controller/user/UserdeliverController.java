@@ -1,7 +1,6 @@
 package com.lhf.dajiuye.web.app.controller.user;
 
-import com.hu.health.common.constants.TopicConstants;
-import com.hu.health.common.utils.JsonUtil;
+import com.lhf.dajiuye.api.common.constants.TopicConstants;
 import com.lhf.dajiuye.api.bean.user.Userdeliver;
 import com.lhf.dajiuye.api.service.message.KafkaService;
 import com.lhf.dajiuye.api.service.user.UserDeliverService;
