@@ -34,7 +34,8 @@ public class GlobalExceptionHandler {
     @ResponseBody //为了返回数据
     public R error(HUException e) {
         e.printStackTrace();
-        return R.error(e.getCode(),e.getMsg()+"huhu");
+        return R.error();
+//        return R.error(e.getCode(),e.getMsg()+"huhu");
     }
 
     //权限不够
