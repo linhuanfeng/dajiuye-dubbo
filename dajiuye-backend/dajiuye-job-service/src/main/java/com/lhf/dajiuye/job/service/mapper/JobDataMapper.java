@@ -32,7 +32,7 @@ public interface JobDataMapper extends BaseMapper<Job> {
             "<if test='-1!=params.jobType'>where j.jobType=#{jobType} </if> " +
             "order by jobReleaseTime desc </script>")
     @ResultMap("com.lhf.dajiuye.job.service.mapper.JobDataMapper.jobMap") // 引用映射
-    List<Job> getJobs( @Param("params") Params params);
+    List<Job> getJobs( Params params);
 
     /**
      * 获取职位列表（cid,jobType）

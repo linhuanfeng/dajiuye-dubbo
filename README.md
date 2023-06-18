@@ -40,12 +40,26 @@ dajiuye-backend
 
 3、即可启动
 
-## 碎碎念
+## 演示视频
+
+https://www.bilibili.com/video/BV1AV4y127tT
+
+## 其他版本
+
+分为三个版本：
+
+springboot版本：https://github.com/linhuanfeng/dajiuye-boot
+
+dubbo版本：https://github.com/linhuanfeng/dajiuye-dubbo
+
+springcloud版本：https://github.com/linhuanfeng/dajiuye-cloud
+
+## 反馈与答疑
+
+最后的最后，如果你部署遇到任何疑问，欢迎添加**扣扣**咨询群【417094004】或**微信号**【moon5672369】咨询！开源不易，一定要给我==Star==哦！！
 
 如果是初学Java的朋友也可以跟着流程借鉴这些代码，试着实现这个项目，相信能对你的成长有所帮助！
 
 如果有心，不妨请博主喝杯茶::laughing::
 
-![image-20221213223101979](README.assets/image-20221213223101979.png)
-
-最后的最后，如果你有任何不懂疑问，欢迎添加**扣扣**咨询群【417094004】，开源不易，一定要给我==Star==哦！！也可加个人微信咨询【moon5672369】
+<img src="../dajiuye-boot/README.assets/image-20230618213213750.png" alt="image-20230618213213750" style="zoom:25%;" />

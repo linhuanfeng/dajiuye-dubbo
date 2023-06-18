@@ -41,7 +41,7 @@ Page({
     QueryParams: {
         query: "",
         cid: "",
-        pageNo: 1,
+        pageNum: 1,
         pageSize: 10,
         // 职位类型
         jobType: -1,

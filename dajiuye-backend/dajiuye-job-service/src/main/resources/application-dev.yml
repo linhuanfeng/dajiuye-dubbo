@@ -3,7 +3,7 @@ dubbo:
   registry:
     address: zookeeper://${host2}:2181
   protocol:
-    port: 7030
+    port: 7179
     name: dubbo
 spring:
   #MySQL配置
